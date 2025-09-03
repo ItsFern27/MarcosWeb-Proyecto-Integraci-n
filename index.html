@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Integración a Proyectos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Integración a Proyectos</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- Custom CSS -->
-  <link href="custom.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="custom.css" rel="stylesheet" />
 </head>
+
 <body class="bg-body">
-  <!-- Header (Navbar) -->
- <!-- Header -->
+    <!-- Header (Navbar) -->
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top" data-bs-theme="light">
         <div class="container">
             <!-- Brand -->
@@ -29,13 +31,13 @@
                 </span>
                 <span class="fw-bold text-dark">Integración a Proyectos</span>
             </a>
-    
+
             <!-- Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
+
             <!-- Nav items -->
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
@@ -51,7 +53,7 @@
     </nav>
 
 
-  <!-- Hero -->
+    <!-- Hero -->
     <!-- Hero Carousel -->
     <div id="heroCarousel" class="carousel slide container my-4" data-bs-ride="carousel">
         <!-- Indicadores -->
@@ -61,7 +63,7 @@
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-    
+
         <div class="carousel-inner rounded-4">
             <!-- Slide 1 -->
             <div class="carousel-item active">
@@ -79,7 +81,7 @@
                     </div>
                 </section>
             </div>
-    
+
             <!-- Slide 2 -->
             <div class="carousel-item">
                 <section class="hero-slide gradient-green-blue px-4 px-md-5">
@@ -97,50 +99,299 @@
                 </section>
             </div>
 
-    <!-- Slide 3 -->
-    <div class="carousel-item">
-        <section class="hero-slide gradient-pink-indigo px-4 px-md-5">
-            <div class="container text-center py-5">
-                <h1 class="display-4 fw-bold mb-3">Comunidad Global</h1>
-                <p class="lead mb-4 mx-auto" style="max-width: 720px;">
-                    Únete a miles de desarrolladores, diseñadores y emprendedores creando el futuro de la tecnología.
-                </p>
-                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                    <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
-                    <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <section class="hero-slide gradient-pink-indigo px-4 px-md-5">
+                    <div class="container text-center py-5">
+                        <h1 class="display-4 fw-bold mb-3">Comunidad Global</h1>
+                        <p class="lead mb-4 mx-auto" style="max-width: 720px;">
+                            Únete a miles de desarrolladores, diseñadores y emprendedores creando el futuro de la
+                            tecnología.
+                        </p>
+                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                            <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
+                            <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
+            aria-label="Anterior">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
+            aria-label="Siguiente">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+
+    <main class="container py-5">
+        <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+            <button class="btn btn-primary px-4 py-2 rounded-pill fw-medium">Recientes</button>
+            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Programación</button>
+            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Diseño</button>
+            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Ciberseguridad</button>
+            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Data Science</button>
+            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Mobile</button>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"Dashboard Analytics","description":"Plataforma completa de análisis de datos en tiempo real con visualizaciones interactivas, reportes automatizados y machine learning integrado. Permite a las empresas tomar decisiones basadas en datos con dashboards personalizables y alertas inteligentes.","author":"María González","role":"Full Stack Developer","members":[{"name":"Carlos Ruiz","role":"Frontend Developer"},{"name":"Ana López","role":"Data Scientist"},{"name":"Pedro Martín","role":"UI/UX Designer"}],"technologies":["React","Node.js","MongoDB","D3.js","Python"],"status":"En desarrollo","duration":"6 meses"}'>
+                    <div class="bg-gradient-blue-purple d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Dashboard Analytics</h5>
+                        <p class="card-text text-muted">Plataforma de análisis de datos en tiempo real con
+                            visualizaciones interactivas y reportes automatizados.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-primary">React</span>
+                            <span class="badge bg-success">Node.js</span>
+                            <span class="badge bg-info">MongoDB</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-    </div>
-    </div>
-    
-    <!-- Controles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
-        aria-label="Anterior">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
-        aria-label="Siguiente">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"App de Fitness","description":"Aplicación móvil completa para seguimiento de ejercicios, nutrición y progreso personal con sistema de gamificación. Incluye planes personalizados, seguimiento de calorías, retos sociales y integración con wearables.","author":"Diego Fernández","role":"Mobile Developer","members":[{"name":"Laura Sánchez","role":"UI/UX Designer"},{"name":"Roberto Kim","role":"Backend Developer"}],"technologies":["Flutter","Firebase","Dart","Node.js"],"status":"Beta","duration":"4 meses"}'>
+                    <div class="bg-gradient-green-blue d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">App de Fitness</h5>
+                        <p class="card-text text-muted">Aplicación móvil para seguimiento de ejercicios, nutrición y
+                            progreso personal con gamificación.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-info">Flutter</span>
+                            <span class="badge bg-warning">Firebase</span>
+                            <span class="badge bg-danger">Dart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"Sistema de Seguridad","description":"Herramienta avanzada de monitoreo y detección de vulnerabilidades para aplicaciones web empresariales. Incluye análisis en tiempo real, reportes de seguridad automatizados y sistema de alertas tempranas.","author":"Elena Vargas","role":"Cybersecurity Specialist","members":[{"name":"Miguel Torres","role":"Backend Developer"},{"name":"Sofia Chen","role":"DevOps Engineer"},{"name":"Alex Rivera","role":"Security Analyst"}],"technologies":["Python","Django","PostgreSQL","Docker","Redis"],"status":"Producción","duration":"8 meses"}'>
+                    <div class="bg-gradient-yellow-orange d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Sistema de Seguridad</h5>
+                        <p class="card-text text-muted">Herramienta de monitoreo y detección de vulnerabilidades para
+                            aplicaciones web empresariales.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-warning">Python</span>
+                            <span class="badge bg-success">Django</span>
+                            <span class="badge bg-primary">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"E-commerce Platform","description":"Plataforma completa de comercio electrónico con gestión avanzada de inventario, pagos integrados, sistema de recomendaciones y panel de administración. Incluye funcionalidades de multi-vendor y análisis de ventas.","author":"Javier Morales","role":"Full Stack Developer","members":[{"name":"Carmen Ruiz","role":"Frontend Developer"},{"name":"Luis García","role":"Backend Developer"},{"name":"Natalia Vega","role":"Product Manager"}],"technologies":["Vue.js","Express","Stripe","MongoDB","Redis"],"status":"Lanzamiento","duration":"10 meses"}'>
+                    <div class="bg-gradient-yellow-orange d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">E-commerce Platform</h5>
+                        <p class="card-text text-muted">Plataforma completa de comercio electrónico con gestión de
+                            inventario y pagos integrados.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-success">Vue.js</span>
+                            <span class="badge bg-success">Express</span>
+                            <span class="badge bg-info">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"ML Predictor","description":"Sistema avanzado de machine learning para predicción de tendencias de mercado y análisis predictivo. Utiliza algoritmos de deep learning para generar insights precisos y recomendaciones automatizadas para inversiones.","author":"Dr. Patricia Silva","role":"Data Scientist","members":[{"name":"Fernando López","role":"ML Engineer"},{"name":"Isabella Chen","role":"Data Analyst"}],"technologies":["Python","TensorFlow","Pandas","Scikit-learn","Docker"],"status":"Investigación","duration":"12 meses"}'>
+                    <div class="bg-gradient-indigo-purple d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">ML Predictor</h5>
+                        <p class="card-text text-muted">Sistema de machine learning para predicción de tendencias de
+                            mercado y análisis predictivo.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-warning">Python</span>
+                            <span class="badge bg-primary">TensorFlow</span>
+                            <span class="badge bg-primary">Pandas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                    data-project='{"name":"Red Social Creativa","description":"Plataforma social innovadora enfocada en artistas y diseñadores para compartir, colaborar y monetizar proyectos creativos. Incluye marketplace integrado, herramientas de colaboración en tiempo real y sistema de portfolios dinámicos.","author":"Andrés Castillo","role":"Creative Director","members":[{"name":"Valeria Mendoza","role":"UI/UX Designer"},{"name":"Tomás Herrera","role":"Frontend Developer"},{"name":"Gabriela Santos","role":"Community Manager"}],"technologies":["React","GraphQL","AWS","Node.js","PostgreSQL"],"status":"Beta Privada","duration":"7 meses"}'>
+                    <div class="bg-gradient-pink-red d-flex align-items-center justify-content-center"
+                        style="height: 200px;">
+                        <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Red Social Creativa</h5>
+                        <p class="card-text text-muted">Plataforma social enfocada en artistas y diseñadores para
+                            compartir y colaborar en proyectos creativos.</p>
+                        <div class="d-flex flex-wrap gap-1">
+                            <span class="badge bg-primary">React</span>
+                            <span class="badge bg-purple">GraphQL</span>
+                            <span class="badge bg-warning">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="projectModal" class="modal fade" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <div class="w-100">
+                        <h2 id="modalTitle" class="modal-title h3 fw-bold text-dark mb-2"></h2>
+                        <div class="d-flex align-items-center gap-3 text-muted small">
+                            <span id="modalStatus" class="badge bg-success"></span>
+                            <span id="modalDuration"></span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div id="modalImage1"
+                                class="bg-gradient-blue-purple rounded-3 d-flex align-items-center justify-content-center"
+                                style="height: 200px;">
+                                <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="modalImage2"
+                                class="bg-gradient-green-blue rounded-3 d-flex align-items-center justify-content-center"
+                                style="height: 200px;">
+                                <svg class="text-white" width="60" height="60" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="h5 fw-semibold text-dark mb-3">Descripción del Proyecto</h3>
+                        <p id="modalDescription" class="text-muted lh-lg"></p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="h5 fw-semibold text-dark mb-3">Equipo del Proyecto</h3>
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center gap-3 p-3 bg-primary bg-opacity-10 rounded-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 48px; height: 48px;">
+                                    <svg class="text-white" width="24" height="24" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p id="modalAuthor" class="fw-semibold text-dark mb-0"></p>
+                                    <p id="modalAuthorRole" class="small text-primary fw-medium mb-0">Líder del Proyecto
+                                    </p>
+                                </div>
+                                <span class="badge bg-primary">Líder</span>
+                            </div>
+                        </div>
+                        <div id="modalMembers"></div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h3 class="h5 fw-semibold text-dark mb-3">Tecnologías Utilizadas</h3>
+                        <div id="modalTechnologies" class="d-flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3">
+                        <button class="btn btn-primary px-4 py-3 fw-semibold flex-fill">
+                            🚀 Solicitar Integración
+                        </button>
+                        <button class="btn btn-outline-primary px-4 py-3 fw-semibold flex-fill">
+                            💬 Contactar Equipo
+                        </button>
+                        <button id="saveProjectBtn" class="btn btn-outline-secondary px-4 py-3 fw-semibold">
+                            ⭐ Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-
-  <main class="container py-5">
-    <!-- Contenido de tu app: tarjetas de proyectos, etc. -->
-    <p class="text-muted">Contenido de ejemplo...</p>
-  </main>
-
-  <!-- Footer -->
-<!-- Footer -->
-  <footer class="bg-white border-top mt-5">
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="bg-white border-top mt-5">
         <div class="container py-5">
             <div class="row g-4">
                 <div class="col-12 col-md-4">
                     <div class="d-flex align-items-center gap-2 mb-2">
                         <span class="brand-badge">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z">
+                                </path>
                             </svg>
                         </span>
                         <span class="fw-bold">Integración a Proyectos</span>
@@ -185,15 +436,15 @@
                 </div>
             </div>
         </div>
-  </footer>
+    </footer>
 
 
-  <!-- Bootstrap Bundle JS -->
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-  </script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
-  <!-- App JS -->
-  <script src="app.js"></script>
+    <!-- App JS -->
+    <script src="app.js"></script>
 </body>
+
 </html>
