@@ -9,13 +9,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
 
+function setImagePositioning(imgElement, filename) {
+    const hMatch = filename.match(/h-(\w+)/);
+    const vMatch = filename.match(/v-(\w+)/);
+    
+    let objectPosition = 'center center';
+    
+    if (hMatch && vMatch) {
+        const hPos = hMatch[1];
+        const vPos = vMatch[1];
+        
+        const hMap = {
+            'start': 'left',
+            'center': 'center',
+            'end': 'right'
+        };
+        
+        const vMap = {
+            'top': 'top',
+            'center': 'center',
+            'end': 'bottom'
+        };
+        
+        objectPosition = `${hMap[hPos]} ${vMap[vPos]}`;
+    }
+    
+    imgElement.style.objectPosition = objectPosition;
+}
+
 function openModal(project) {
     document.getElementById('modalTitle').textContent = project.name;
     document.getElementById('modalDescription').textContent = project.description;
     document.getElementById('modalAuthor').textContent = project.author;
     document.getElementById('modalAuthorRole').textContent = project.role;
     document.getElementById('modalStatus').textContent = project.status;
-    document.getElementById('modalDuration').textContent = `Duración: ${project.duration}`;
+    document.getElementById('modalDuration').textContent = `Publicación: ${project.duration}`;
+
+    const projectImageMap = {
+        'Dashboard Analytics': {
+            img1: 'img2/dashboard1(h-start ,v-center).jpg',
+            img2: 'img2/dashboard2(h-start ,v-top).png'
+        },
+        'App de Fitness': {
+            img1: 'img2/app1(h-center ,v-center).png',
+            img2: 'img2/app2(h-center ,v-top).png'
+        },
+        'Sistema de Seguridad': {
+            img1: 'img2/sistema1(h-center ,v-center).jpg',
+            img2: 'img2/sistema2(h-center ,v-center).jpg'
+        },
+        'E-commerce Platform': {
+            img1: 'img2/e-commerce1(h-center ,v-center).png',
+            img2: 'img2/e-commerce2(h-center ,v-center).png'
+        },
+        'ML Predictor': {
+            img1: 'img2/ml1(h-center ,v-center).png',
+            img2: 'img2/ml2(h-center ,v-center).png'
+        },
+        'Red Social Creativa': {
+            img1: 'img2/red1(h-center ,v-center).jpg',
+            img2: 'img2/red2(h-center ,v-center).png'
+        }
+    };
+
+    const projectImages = projectImageMap[project.name];
+    if (projectImages) {
+        const img1 = document.getElementById('modalImg1');
+        const img2 = document.getElementById('modalImg2');
+        
+        img1.src = projectImages.img1;
+        img1.alt = `${project.name} - Imagen 1`;
+        img2.src = projectImages.img2;
+        img2.alt = `${project.name} - Imagen 2`;
+
+        setImagePositioning(img1, projectImages.img1);
+        setImagePositioning(img2, projectImages.img2);
+    }
 
     const statusElement = document.getElementById('modalStatus');
     statusElement.className = 'badge';
