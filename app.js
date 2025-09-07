@@ -208,21 +208,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/* seccion Mis proyectos */
-function showMyProjects() {
-  document.getElementById("homePage").classList.add("d-none");
-  document.getElementById("myProjectsPage").classList.remove("d-none");
-
-  // marcar activo en el nav
-  document.querySelectorAll(".navbar-nav .nav-link").forEach(a => a.classList.remove("active"));
-  const link = document.querySelector('[data-link="mis-proyectos"]');
-  if (link) link.classList.add("active");
-}
-
-function showHomePage() {
-  document.getElementById("myProjectsPage").classList.add("d-none");
-  document.getElementById("homePage").classList.remove("d-none");
-
-  // quitar activo
-  document.querySelectorAll(".navbar-nav .nav-link").forEach(a => a.classList.remove("active"));
-}

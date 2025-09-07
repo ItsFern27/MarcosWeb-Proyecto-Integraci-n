@@ -21,18 +21,17 @@
 
 <body class="bg-body">
     <!-- Header (Navbar) -->
-    <!-- Header -->
     <nav class="navbar navbar-expand-lg bg-white sticky-top" data-bs-theme="light">
         <div class="container">
             <!-- Brand -->
             <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                 <span class="brand-badge">
-                    <!-- Icono flecha (similar a tu SVG) -->
+                    <!-- Icono flecha -->
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                     </svg>
                 </span>
-                <span class="fw-bold text-dark">Integración a Proyectos</span>
+                <span class="fw-bold text-dark">ProjectLinks</span>
             </a>
 
             <!-- Toggler -->
@@ -45,8 +44,7 @@
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item me-lg-3">
-                        <a class="nav-link" href="#" data-link="mis-proyectos" onclick="showMyProjects()">Mis Proyectos</a>
-                    </li>
+                        <a class="nav-link active" href="mis-proyectos.html">Mis Proyectos</a>
                     <li class="nav-item">
                         <a class="btn btn-primary" href="#login">Iniciar Sesión</a>
                     </li>
@@ -55,458 +53,299 @@
         </div>
     </nav>
     <div id="homePage">
-    <!-- Hero -->
-    <!-- Hero Carousel -->
-    <div id="heroCarousel" class="carousel slide container my-4" data-bs-ride="carousel">
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-                aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
 
-        <div class="carousel-inner rounded-4">
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <section class="hero-slide gradient-blue-purple px-4 px-md-5">
-                    <div class="container text-center py-5">
-                        <h1 class="display-4 fw-bold mb-3">Conecta, Colabora y Construye</h1>
-                        <p class="lead mb-4 mx-auto" style="max-width: 720px;">
-                            Descubre proyectos de software increíbles, conecta con desarrolladores talentosos
-                            y añade experiencias valiosas a tu portafolio profesional.
-                        </p>
-                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                            <a class="btn btn-hero-primary px-4 py-3" href="#explorar">Explorar Proyectos</a>
-                            <a class="btn btn-hero-outline px-4 py-3" href="#crear">Crear Proyecto</a>
-                        </div>
-                    </div>
-                </section>
+        <!-- Hero Carousel -->
+        <div id="heroCarousel" class="carousel slide container my-4" data-bs-ride="carousel">
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
 
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <section class="hero-slide gradient-green-blue px-4 px-md-5">
-                    <div class="container text-center py-5">
-                        <h1 class="display-4 fw-bold mb-3">Impulsa tu Carrera</h1>
-                        <p class="lead mb-4 mx-auto" style="max-width: 720px;">
-                            Participa en proyectos reales, aprende nuevas tecnologías y construye un portafolio que
-                            destaque.
-                        </p>
-                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                            <a class="btn btn-hero-primary px-4 py-3" href="#oportunidades">Ver Oportunidades</a>
-                            <a class="btn btn-hero-outline px-4 py-3" href="#unirse">Unirse Ahora</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item">
-                <section class="hero-slide gradient-pink-indigo px-4 px-md-5">
-                    <div class="container text-center py-5">
-                        <h1 class="display-4 fw-bold mb-3">Comunidad Global</h1>
-                        <p class="lead mb-4 mx-auto" style="max-width: 720px;">
-                            Únete a miles de desarrolladores, diseñadores y emprendedores creando el futuro de la
-                            tecnología.
-                        </p>
-                        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                            <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
-                            <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-
-        <!-- Controles -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
-            aria-label="Anterior">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
-            aria-label="Siguiente">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
-    </div>
-
-
-    <main class="container py-5">
-        <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
-            <button class="btn btn-primary px-4 py-2 rounded-pill fw-medium">Recientes</button>
-            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Programación</button>
-            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Diseño</button>
-            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Ciberseguridad</button>
-            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Data Science</button>
-            <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Mobile</button>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"Dashboard Analytics","description":"Plataforma completa de análisis de datos en tiempo real con visualizaciones interactivas, reportes automatizados y machine learning integrado. Permite a las empresas tomar decisiones basadas en datos con dashboards personalizables y alertas inteligentes.","author":"María González","role":"Full Stack Developer","members":[{"name":"Carlos Ruiz","role":"Frontend Developer"},{"name":"Ana López","role":"Data Scientist"},{"name":"Pedro Martín","role":"UI/UX Designer"}],"technologies":["React","Node.js","MongoDB","D3.js","Python"],"status":"En desarrollo","duration":"03/11/2026"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/dashboard.png" alt="Dashboard Analytics"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Dashboard Analytics</h5>
-                        <p class="card-text text-muted">Plataforma de análisis de datos en tiempo real con
-                            visualizaciones interactivas y reportes automatizados.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-primary">React</span>
-                            <span class="badge bg-success">Node.js</span>
-                            <span class="badge bg-info">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"App de Fitness","description":"Aplicación móvil completa para seguimiento de ejercicios, nutrición y progreso personal con sistema de gamificación. Incluye planes personalizados, seguimiento de calorías, retos sociales y integración con wearables.","author":"Diego Fernández","role":"Mobile Developer","members":[{"name":"Laura Sánchez","role":"UI/UX Designer"},{"name":"Roberto Kim","role":"Backend Developer"}],"technologies":["Flutter","Firebase","Dart","Node.js"],"status":"Beta","duration":"20/07/2025"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/app.png" alt="App de Fitness"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">App de Fitness</h5>
-                        <p class="card-text text-muted">Aplicación móvil para seguimiento de ejercicios, nutrición y
-                            progreso personal con gamificación.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-info">Flutter</span>
-                            <span class="badge bg-warning">Firebase</span>
-                            <span class="badge bg-danger">Dart</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"Sistema de Seguridad","description":"Herramienta avanzada de monitoreo y detección de vulnerabilidades para aplicaciones web empresariales. Incluye análisis en tiempo real, reportes de seguridad automatizados y sistema de alertas tempranas.","author":"Elena Vargas","role":"Cybersecurity Specialist","members":[{"name":"Miguel Torres","role":"Backend Developer"},{"name":"Sofia Chen","role":"DevOps Engineer"},{"name":"Alex Rivera","role":"Security Analyst"}],"technologies":["Python","Django","PostgreSQL","Docker","Redis"],"status":"Producción","duration":"05/05/2026"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/sistema.png" alt="Sistema de Seguridad"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Sistema de Seguridad</h5>
-                        <p class="card-text text-muted">Herramienta de monitoreo y detección de vulnerabilidades para
-                            aplicaciones web empresariales.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-warning">Python</span>
-                            <span class="badge bg-success">Django</span>
-                            <span class="badge bg-primary">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"E-commerce Platform","description":"Plataforma completa de comercio electrónico con gestión avanzada de inventario, pagos integrados, sistema de recomendaciones y panel de administración. Incluye funcionalidades de multi-vendor y análisis de ventas.","author":"Javier Morales","role":"Full Stack Developer","members":[{"name":"Carmen Ruiz","role":"Frontend Developer"},{"name":"Luis García","role":"Backend Developer"},{"name":"Natalia Vega","role":"Product Manager"}],"technologies":["Vue.js","Express","Stripe","MongoDB","Redis"],"status":"Lanzamiento","duration":"hoy"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/e-commerce.png" alt="E-commerce Platform"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">E-commerce Platform</h5>
-                        <p class="card-text text-muted">Plataforma completa de comercio electrónico con gestión de
-                            inventario y pagos integrados.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-success">Vue.js</span>
-                            <span class="badge bg-success">Express</span>
-                            <span class="badge bg-info">Stripe</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"ML Predictor","description":"Sistema avanzado de machine learning para predicción de tendencias de mercado y análisis predictivo. Utiliza algoritmos de deep learning para generar insights precisos y recomendaciones automatizadas para inversiones.","author":"Dr. Patricia Silva","role":"Data Scientist","members":[{"name":"Fernando López","role":"ML Engineer"},{"name":"Isabella Chen","role":"Data Analyst"}],"technologies":["Python","TensorFlow","Pandas","Scikit-learn","Docker"],"status":"Investigación","duration":"15/10/2026"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/ml.png" alt="ML Predictor"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">ML Predictor</h5>
-                        <p class="card-text text-muted">Sistema de machine learning para predicción de tendencias de
-                            mercado y análisis predictivo.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-warning">Python</span>
-                            <span class="badge bg-primary">TensorFlow</span>
-                            <span class="badge bg-primary">Pandas</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                    data-project='{"name":"Red Social Creativa","description":"Plataforma social innovadora enfocada en artistas y diseñadores para compartir, colaborar y monetizar proyectos creativos. Incluye marketplace integrado, herramientas de colaboración en tiempo real y sistema de portfolios dinámicos.","author":"Andrés Castillo","role":"Creative Director","members":[{"name":"Valeria Mendoza","role":"UI/UX Designer"},{"name":"Tomás Herrera","role":"Frontend Developer"},{"name":"Gabriela Santos","role":"Community Manager"}],"technologies":["React","GraphQL","AWS","Node.js","PostgreSQL"],"status":"Beta Privada","duration":"30/08/2025"}'>
-                    <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                        <img src="img/red.png" alt="Red Social Creativa"
-                            style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Red Social Creativa</h5>
-                        <p class="card-text text-muted">Plataforma social enfocada en artistas y diseñadores para
-                            compartir y colaborar en proyectos creativos.</p>
-                        <div class="d-flex flex-wrap gap-1">
-                            <span class="badge bg-primary">React</span>
-                            <span class="badge bg-purple">GraphQL</span>
-                            <span class="badge bg-warning">AWS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div id="projectModal" class="modal fade" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0 pb-0">
-                    <div class="w-100">
-                        <h2 id="modalTitle" class="modal-title h3 fw-bold text-dark mb-2"></h2>
-                        <div class="d-flex align-items-center gap-3 text-muted small">
-                            <span id="modalStatus" class="badge bg-success"></span>
-                            <span id="modalDuration"></span>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-4 mb-4">
-                        <div class="col-md-6">
-                            <div id="modalImage1" class="bg-white rounded-3 overflow-hidden" style="height: 200px;">
-                                <img id="modalImg1" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="carousel-inner rounded-4">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <section class="hero-slide gradient-blue-purple px-4 px-md-5">
+                        <div class="container text-center py-5">
+                            <h1 class="display-4 fw-bold mb-3">Conecta, Colabora y Construye</h1>
+                            <p class="lead mb-4 mx-auto" style="max-width: 720px;">
+                                Descubre proyectos de software increíbles, conecta con desarrolladores talentosos
+                                y añade experiencias valiosas a tu portafolio profesional.
+                            </p>
+                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <a class="btn btn-hero-primary px-4 py-3" href="#explorar">Explorar Proyectos</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="#crear">Crear Proyecto</a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div id="modalImage2" class="bg-white rounded-3 overflow-hidden" style="height: 200px;">
-                                <img id="modalImg2" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                    </section>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <section class="hero-slide gradient-green-blue px-4 px-md-5">
+                        <div class="container text-center py-5">
+                            <h1 class="display-4 fw-bold mb-3">Impulsa tu Carrera</h1>
+                            <p class="lead mb-4 mx-auto" style="max-width: 720px;">
+                                Participa en proyectos reales, aprende nuevas tecnologías y construye un portafolio que
+                                destaque.
+                            </p>
+                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <a class="btn btn-hero-primary px-4 py-3" href="#oportunidades">Ver Oportunidades</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="#unirse">Unirse Ahora</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <section class="hero-slide gradient-pink-indigo px-4 px-md-5">
+                        <div class="container text-center py-5">
+                            <h1 class="display-4 fw-bold mb-3">Comunidad Global</h1>
+                            <p class="lead mb-4 mx-auto" style="max-width: 720px;">
+                                Únete a miles de desarrolladores, diseñadores y emprendedores creando el futuro de la
+                                tecnología.
+                            </p>
+                            <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                                <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Controles -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"
+                aria-label="Anterior">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"
+                aria-label="Siguiente">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+
+
+        <main class="container py-5">
+            <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+                <button class="btn btn-primary px-4 py-2 rounded-pill fw-medium">Recientes</button>
+                <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Programación</button>
+                <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Diseño</button>
+                <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Ciberseguridad</button>
+                <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Data Science</button>
+                <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Mobile</button>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"Dashboard Analytics","description":"Plataforma completa de análisis de datos en tiempo real con visualizaciones interactivas, reportes automatizados y machine learning integrado. Permite a las empresas tomar decisiones basadas en datos con dashboards personalizables y alertas inteligentes.","author":"María González","role":"Full Stack Developer","members":[{"name":"Carlos Ruiz","role":"Frontend Developer"},{"name":"Ana López","role":"Data Scientist"},{"name":"Pedro Martín","role":"UI/UX Designer"}],"technologies":["React","Node.js","MongoDB","D3.js","Python"],"status":"En desarrollo","duration":"03/11/2026"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/dashboard.png" alt="Dashboard Analytics"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Dashboard Analytics</h5>
+                            <p class="card-text text-muted">Plataforma de análisis de datos en tiempo real con
+                                visualizaciones interactivas y reportes automatizados.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-primary">React</span>
+                                <span class="badge bg-success">Node.js</span>
+                                <span class="badge bg-info">MongoDB</span>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5 fw-semibold text-dark mb-3">Descripción del Proyecto</h3>
-                        <p id="modalDescription" class="text-muted lh-lg"></p>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"App de Fitness","description":"Aplicación móvil completa para seguimiento de ejercicios, nutrición y progreso personal con sistema de gamificación. Incluye planes personalizados, seguimiento de calorías, retos sociales y integración con wearables.","author":"Diego Fernández","role":"Mobile Developer","members":[{"name":"Laura Sánchez","role":"UI/UX Designer"},{"name":"Roberto Kim","role":"Backend Developer"}],"technologies":["Flutter","Firebase","Dart","Node.js"],"status":"Beta","duration":"20/07/2025"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/app.png" alt="App de Fitness"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">App de Fitness</h5>
+                            <p class="card-text text-muted">Aplicación móvil para seguimiento de ejercicios, nutrición y
+                                progreso personal con gamificación.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-info">Flutter</span>
+                                <span class="badge bg-warning">Firebase</span>
+                                <span class="badge bg-danger">Dart</span>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5 fw-semibold text-dark mb-3">Equipo del Proyecto</h3>
-                        <div class="mb-3">
-                            <div class="d-flex align-items-center gap-3 p-3 bg-primary bg-opacity-10 rounded-3">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center"
-                                    style="width: 48px; height: 48px;">
-                                    <svg class="text-white" width="24" height="24" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
-                                        </path>
-                                    </svg>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"Sistema de Seguridad","description":"Herramienta avanzada de monitoreo y detección de vulnerabilidades para aplicaciones web empresariales. Incluye análisis en tiempo real, reportes de seguridad automatizados y sistema de alertas tempranas.","author":"Elena Vargas","role":"Cybersecurity Specialist","members":[{"name":"Miguel Torres","role":"Backend Developer"},{"name":"Sofia Chen","role":"DevOps Engineer"},{"name":"Alex Rivera","role":"Security Analyst"}],"technologies":["Python","Django","PostgreSQL","Docker","Redis"],"status":"Producción","duration":"05/05/2026"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/sistema.png" alt="Sistema de Seguridad"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sistema de Seguridad</h5>
+                            <p class="card-text text-muted">Herramienta de monitoreo y detección de vulnerabilidades
+                                para
+                                aplicaciones web empresariales.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-warning">Python</span>
+                                <span class="badge bg-success">Django</span>
+                                <span class="badge bg-primary">PostgreSQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"E-commerce Platform","description":"Plataforma completa de comercio electrónico con gestión avanzada de inventario, pagos integrados, sistema de recomendaciones y panel de administración. Incluye funcionalidades de multi-vendor y análisis de ventas.","author":"Javier Morales","role":"Full Stack Developer","members":[{"name":"Carmen Ruiz","role":"Frontend Developer"},{"name":"Luis García","role":"Backend Developer"},{"name":"Natalia Vega","role":"Product Manager"}],"technologies":["Vue.js","Express","Stripe","MongoDB","Redis"],"status":"Lanzamiento","duration":"hoy"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/e-commerce.png" alt="E-commerce Platform"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">E-commerce Platform</h5>
+                            <p class="card-text text-muted">Plataforma completa de comercio electrónico con gestión de
+                                inventario y pagos integrados.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-success">Vue.js</span>
+                                <span class="badge bg-success">Express</span>
+                                <span class="badge bg-info">Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"ML Predictor","description":"Sistema avanzado de machine learning para predicción de tendencias de mercado y análisis predictivo. Utiliza algoritmos de deep learning para generar insights precisos y recomendaciones automatizadas para inversiones.","author":"Dr. Patricia Silva","role":"Data Scientist","members":[{"name":"Fernando López","role":"ML Engineer"},{"name":"Isabella Chen","role":"Data Analyst"}],"technologies":["Python","TensorFlow","Pandas","Scikit-learn","Docker"],"status":"Investigación","duration":"15/10/2026"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/ml.png" alt="ML Predictor"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">ML Predictor</h5>
+                            <p class="card-text text-muted">Sistema de machine learning para predicción de tendencias de
+                                mercado y análisis predictivo.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-warning">Python</span>
+                                <span class="badge bg-primary">TensorFlow</span>
+                                <span class="badge bg-primary">Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
+                        data-project='{"name":"Red Social Creativa","description":"Plataforma social innovadora enfocada en artistas y diseñadores para compartir, colaborar y monetizar proyectos creativos. Incluye marketplace integrado, herramientas de colaboración en tiempo real y sistema de portfolios dinámicos.","author":"Andrés Castillo","role":"Creative Director","members":[{"name":"Valeria Mendoza","role":"UI/UX Designer"},{"name":"Tomás Herrera","role":"Frontend Developer"},{"name":"Gabriela Santos","role":"Community Manager"}],"technologies":["React","GraphQL","AWS","Node.js","PostgreSQL"],"status":"Beta Privada","duration":"30/08/2025"}'>
+                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="img/red.png" alt="Red Social Creativa"
+                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Red Social Creativa</h5>
+                            <p class="card-text text-muted">Plataforma social enfocada en artistas y diseñadores para
+                                compartir y colaborar en proyectos creativos.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-primary">React</span>
+                                <span class="badge bg-purple">GraphQL</span>
+                                <span class="badge bg-warning">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="projectModal" class="modal fade" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0 pb-0">
+                        <div class="w-100">
+                            <h2 id="modalTitle" class="modal-title h3 fw-bold text-dark mb-2"></h2>
+                            <div class="d-flex align-items-center gap-3 text-muted small">
+                                <span id="modalStatus" class="badge bg-success"></span>
+                                <span id="modalDuration"></span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6">
+                                <div id="modalImage1" class="bg-white rounded-3 overflow-hidden" style="height: 200px;">
+                                    <img id="modalImg1" src="" alt=""
+                                        style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
-                                <div class="flex-grow-1">
-                                    <p id="modalAuthor" class="fw-semibold text-dark mb-0"></p>
-                                    <p id="modalAuthorRole" class="small text-primary fw-medium mb-0">Líder del Proyecto
-                                    </p>
+                            </div>
+                            <div class="col-md-6">
+                                <div id="modalImage2" class="bg-white rounded-3 overflow-hidden" style="height: 200px;">
+                                    <img id="modalImg2" src="" alt=""
+                                        style="width: 100%; height: 100%; object-fit: cover;">
                                 </div>
-                                <span class="badge bg-primary">Líder</span>
                             </div>
                         </div>
-                        <div id="modalMembers"></div>
-                    </div>
 
-                    <div class="mb-4">
-                        <h3 class="h5 fw-semibold text-dark mb-3">Tecnologías Utilizadas</h3>
-                        <div id="modalTechnologies" class="d-flex flex-wrap gap-2"></div>
-                    </div>
+                        <div class="mb-4">
+                            <h3 class="h5 fw-semibold text-dark mb-3">Descripción del Proyecto</h3>
+                            <p id="modalDescription" class="text-muted lh-lg"></p>
+                        </div>
 
-                    <div class="d-flex flex-column flex-sm-row gap-3">
-                        <button class="btn btn-primary px-4 py-3 fw-semibold flex-fill">
-                            🚀 Solicitar Integración
-                        </button>
-                        <button class="btn btn-outline-primary px-4 py-3 fw-semibold flex-fill">
-                            💬 Contactar Equipo
-                        </button>
-                        <button id="saveProjectBtn" class="btn btn-outline-secondary px-4 py-3 fw-semibold">
-                            ⭐ Guardar
-                        </button>
+                        <div class="mb-4">
+                            <h3 class="h5 fw-semibold text-dark mb-3">Equipo del Proyecto</h3>
+                            <div class="mb-3">
+                                <div class="d-flex align-items-center gap-3 p-3 bg-primary bg-opacity-10 rounded-3">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center"
+                                        style="width: 48px; height: 48px;">
+                                        <svg class="text-white" width="24" height="24" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p id="modalAuthor" class="fw-semibold text-dark mb-0"></p>
+                                        <p id="modalAuthorRole" class="small text-primary fw-medium mb-0">Líder del
+                                            Proyecto
+                                        </p>
+                                    </div>
+                                    <span class="badge bg-primary">Líder</span>
+                                </div>
+                            </div>
+                            <div id="modalMembers"></div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h3 class="h5 fw-semibold text-dark mb-3">Tecnologías Utilizadas</h3>
+                            <div id="modalTechnologies" class="d-flex flex-wrap gap-2"></div>
+                        </div>
+
+                        <div class="d-flex flex-column flex-sm-row gap-3">
+                            <button class="btn btn-primary px-4 py-3 fw-semibold flex-fill">
+                                🚀 Solicitar Integración
+                            </button>
+                            <button class="btn btn-outline-primary px-4 py-3 fw-semibold flex-fill">
+                                💬 Contactar Equipo
+                            </button>
+                            <button id="saveProjectBtn" class="btn btn-outline-secondary px-4 py-3 fw-semibold">
+                                ⭐ Guardar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
     <!--fin del homePage-->
 
-    <!--sección mis proyectos-->
-    <div id="myProjectsPage" class="d-none">
-    <main class="container py-5">
-        
-        <!-- Encabezado -->
-        <div class="mb-4 d-flex align-items-center gap-3">
-        <button onclick="showHomePage()" class="btn btn-outline-primary">
-            ← Volver
-        </button>
-        <h1 class="fw-bold mb-0">Mis Proyectos</h1>
-        </div>
-        <p class="text-muted mb-5">Gestiona tus proyectos guardados y aquellos en los que participas activamente.</p>
-
-        <!-- Tarjetas estadísticas -->
-        <div class="row g-4 mb-5">
-        <div class="col-md-4">
-            <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="fw-bold">3</h2>
-                <p class="text-muted mb-0">Proyectos Guardados</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="fw-bold">2</h2>
-                <p class="text-muted mb-0">Participaciones Activas</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card text-center shadow-sm">
-            <div class="card-body">
-                <h2 class="fw-bold">1</h2>
-                <p class="text-muted mb-0">Proyectos Completados</p>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <!-- Proyectos Guardados -->
-        <section class="mb-5">
-        <h2 class="h4 fw-bold mb-4">📚 Proyectos Guardados</h2>
-        <div class="row g-4">
-            
-            <!-- Proyecto 1 -->
-            <div class="col-md-6 col-lg-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header text-center bg-primary text-white">
-                <i class="bi bi-bar-chart fs-1"></i>
-                </div>
-                <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Dashboard Analytics</h5>
-                <p class="text-muted small">Guardado hace 2 días</p>
-                <div class="mb-3">
-                    <span class="badge bg-primary">React</span>
-                    <span class="badge bg-success">Node.js</span>
-                </div>
-                <div class="mt-auto d-flex gap-2">
-                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                    <button class="btn btn-outline-secondary w-100">Aplicar</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Proyecto 2 -->
-            <div class="col-md-6 col-lg-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header text-center bg-success text-white">
-                <i class="bi bi-phone fs-1"></i>
-                </div>
-                <div class="card-body d-flex flex-column">
-                <h5 class="card-title">App de Fitness</h5>
-                <p class="text-muted small">Guardado hace 1 semana</p>
-                <div class="mb-3">
-                    <span class="badge bg-info">Flutter</span>
-                    <span class="badge bg-warning">Firebase</span>
-                </div>
-                <div class="mt-auto d-flex gap-2">
-                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                    <button class="btn btn-outline-secondary w-100">Aplicar</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Proyecto 3 -->
-            <div class="col-md-6 col-lg-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-header text-center bg-purple text-white">
-                <i class="bi bi-graph-up fs-1"></i>
-                </div>
-                <div class="card-body d-flex flex-column">
-                <h5 class="card-title">ML Predictor</h5>
-                <p class="text-muted small">Guardado hace 3 días</p>
-                <div class="mb-3">
-                    <span class="badge bg-warning">Python</span>
-                    <span class="badge bg-info">TensorFlow</span>
-                </div>
-                <div class="mt-auto d-flex gap-2">
-                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                    <button class="btn btn-outline-secondary w-100">Aplicar</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-        </div>
-        </section>
-
-        <!-- Participaciones activas -->
-        <section>
-        <h2 class="h4 fw-bold mb-4">🚀 Mis Participaciones</h2>
-        
-        <!-- Proyecto activo 1 -->
-        <div class="card shadow-sm mb-4">
-            <div class="card-body">
-            <h5 class="card-title">Sistema de Seguridad</h5>
-            <p class="text-muted small">Tu rol: <span class="fw-bold text-primary">Frontend Developer</span></p>
-            <div class="progress mb-3" style="height: 6px;">
-                <div class="progress-bar bg-success" style="width: 75%"></div>
-            </div>
-            <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-warning">Python</span>
-                <span class="badge bg-success">Django</span>
-                <span class="badge bg-primary">PostgreSQL</span>
-            </div>
-            <div class="mt-3 d-flex gap-2">
-                <button class="btn btn-primary">Continuar Trabajando</button>
-                <button class="btn btn-outline-secondary">Ver Detalles</button>
-                <button class="btn btn-outline-danger">Dejar Proyecto</button>
-            </div>
-            </div>
-        </div>
-
-        <!-- Proyecto activo 2 -->
-        <div class="card shadow-sm">
-            <div class="card-body">
-            <h5 class="card-title">Red Social Creativa</h5>
-            <p class="text-muted small">Tu rol: <span class="fw-bold text-primary">UI/UX Designer</span></p>
-            <div class="progress mb-3" style="height: 6px;">
-                <div class="progress-bar bg-info" style="width: 45%"></div>
-            </div>
-            <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-primary">React</span>
-                <span class="badge bg-purple">GraphQL</span>
-                <span class="badge bg-danger">AWS</span>
-            </div>
-            <div class="mt-3 d-flex gap-2">
-                <button class="btn btn-primary">Continuar Trabajando</button>
-                <button class="btn btn-outline-secondary">Ver Detalles</button>
-                <button class="btn btn-outline-danger">Dejar Proyecto</button>
-            </div>
-            </div>
-        </div>
-        </section>
-
-    </main>
-    </div>
-
-    <!-- Footer -->
     <!-- Footer -->
     <footer class="bg-white border-top mt-5">
         <div class="container py-5">
@@ -519,7 +358,7 @@
                                 </path>
                             </svg>
                         </span>
-                        <span class="fw-bold">Integración a Proyectos</span>
+                        <span class="fw-bold">ProjectLinks</span>
                     </div>
                     <p class="text-muted mb-0">
                         Conecta con equipos, aporta a proyectos reales y haz crecer tu portafolio.
@@ -554,7 +393,7 @@
             </div>
 
             <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center pt-4 mt-4 border-top">
-                <small class="text-muted">© 2025 Integración a Proyectos. Todos los derechos reservados.</small>
+                <small class="text-muted">© 2025 ProjectLinks. Todos los derechos reservados.</small>
                 <div class="d-flex gap-3 mt-3 mt-sm-0">
                     <a href="#privacidad" class="text-decoration-none text-muted">Privacidad</a>
                     <a href="#terminos" class="text-decoration-none text-muted">Términos</a>
@@ -563,13 +402,13 @@
         </div>
     </footer>
 
-    
 
-    <!-- Bootstrap Bundle JS -->
+
+    <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
-    <!-- App JS -->
+    <!-- Script -->
     <script src="app.js"></script>
 </body>
 
