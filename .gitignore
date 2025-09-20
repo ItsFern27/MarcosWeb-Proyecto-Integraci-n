@@ -1,0 +1,4 @@
+# Archivos de base de datos locales
+*.db
+*.sql.dump
+*.backup
