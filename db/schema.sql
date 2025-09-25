@@ -1,6 +1,3 @@
--- Crear base de datos
-CREATE DATABASE integracion_proyectos;
-
 -- Tabla de usuarios
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
@@ -38,15 +35,6 @@ CREATE TABLE portafolio (
     titulo VARCHAR(200),
     descripcion TEXT,
     url TEXT,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Tabla de contactos (red de usuarios)
-CREATE TABLE contactos (
-    id SERIAL PRIMARY KEY,
-    usuario_id INT REFERENCES usuarios(id) ON DELETE CASCADE,
-    contacto_id INT REFERENCES usuarios(id) ON DELETE CASCADE,
-    estado VARCHAR(50) DEFAULT 'pendiente', -- pendiente, aceptado, rechazado
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
