@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8" />
@@ -148,7 +148,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Dashboard Analytics</h5>
+                            <h5 class="card-title" th:text="${Titulo1}"></h5> <!-- Dashboard Analytics -->
                             <p class="card-text text-muted">Plataforma de análisis de datos en tiempo real con
                                 visualizaciones interactivas y reportes automatizados.</p>
                             <div class="d-flex flex-wrap gap-1">
@@ -168,7 +168,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">App de Fitness</h5>
+                            <h5 class="card-title" th:text="${Titulo2}"></h5> <!-- App de Fitness -->
                             <p class="card-text text-muted">Aplicación móvil para seguimiento de ejercicios, nutrición y
                                 progreso personal con gamificación.</p>
                             <div class="d-flex flex-wrap gap-1">
@@ -188,7 +188,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Sistema de Seguridad</h5>
+                            <h5 class="card-title" th:text="${Titulo3}"></h5> <!-- Sistema de Seguridad -->
                             <p class="card-text text-muted">Herramienta de monitoreo y detección de vulnerabilidades
                                 para
                                 aplicaciones web empresariales.</p>
@@ -209,7 +209,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">E-commerce Platform</h5>
+                            <h5 class="card-title" th:text="${Titulo4}"></h5> <!-- E-commerce Platform -->
                             <p class="card-text text-muted">Plataforma completa de comercio electrónico con gestión de
                                 inventario y pagos integrados.</p>
                             <div class="d-flex flex-wrap gap-1">
@@ -229,7 +229,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">ML Predictor</h5>
+                            <h5 class="card-title" th:text="${Titulo5}"></h5> <!-- ML Predictor -->
                             <p class="card-text text-muted">Sistema de machine learning para predicción de tendencias de
                                 mercado y análisis predictivo.</p>
                             <div class="d-flex flex-wrap gap-1">
@@ -249,7 +249,7 @@
                                 style="max-width: 80%; max-height: 80%; object-fit: contain;">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">Red Social Creativa</h5>
+                            <h5 class="card-title" th:text="${Titulo6}"></h5> <!-- Red Social Creativa -->
                             <p class="card-text text-muted">Plataforma social enfocada en artistas y diseñadores para
                                 compartir y colaborar en proyectos creativos.</p>
                             <div class="d-flex flex-wrap gap-1">
