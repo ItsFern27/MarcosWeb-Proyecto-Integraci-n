@@ -1,0 +1,145 @@
+:root {
+  --brand-blue: #2563eb;
+  --brand-purple: #7c3aed;
+}
+
+/* Fondo degradado */
+.bg-body {
+  background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+}
+
+/* Logo */
+.brand-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hero: alturas y gradientes por slide */
+.hero-slide {
+  min-height: 60vh;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.gradient-blue-purple {
+  background: linear-gradient(90deg, #2563eb, #7c3aed, #4f46e5);
+}
+.gradient-green-blue {
+  background: linear-gradient(90deg, #22c55e, #06b6d4, #2563eb);
+}
+.gradient-pink-indigo {
+  background: linear-gradient(90deg, #ec4899, #ef4444, #4f46e5);
+}
+
+/* Botones primarios y secundarios con énfasis */
+.btn-hero-primary {
+  background: #fff;
+  color: var(--brand-blue);
+  font-weight: 600;
+  border: none;
+}
+.btn-hero-primary:hover {
+  background: #f1f5f9;
+  color: #1d4ed8;
+}
+.btn-hero-outline {
+  background: transparent;
+  color: #fff;
+  font-weight: 600;
+  border: 2px solid #fff;
+}
+.btn-hero-outline:hover {
+  background: #fff;
+  color: var(--brand-blue);
+}
+
+/* Navbar pegajosa + sombra */
+.navbar.sticky-top {
+  backdrop-filter: saturate(180%) blur(6px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-purple));
+  border: none;
+}
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+/* Aplicar, Ver Detalles en participaciones */
+
+.btn-gradient-green {
+  background: linear-gradient(90deg, #10b981, #22c55e);
+  color: #fff;
+  border: none;
+}
+
+.btn-gradient-green:hover {
+  filter: brightness(0.95);
+  color: #fff;
+}
+
+/* Dejar Proyecto */
+.btn-gradient-red {
+  background: linear-gradient(90deg, #ef4444, #b91c1c);
+  color: #fff;
+  border: none;
+}
+.btn-gradient-red:hover {
+  filter: brightness(0.95);
+  color: #fff;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.bg-purple {
+  background-color: #6f42c1 !important;
+}
+
+.bg-gradient-blue-purple {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+}
+
+.bg-gradient-green-blue {
+  background: linear-gradient(135deg, #10b981, #06b6d4) !important;
+}
+
+.bg-gradient-yellow-orange {
+  background: linear-gradient(135deg, #f59e0b, #f97316) !important;
+}
+
+.bg-gradient-indigo-purple {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+}
+
+.bg-gradient-pink-red {
+  background: linear-gradient(135deg, #ec4899, #ef4444) !important;
+}
+
+.bg-gradient-purple-pink {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
+}
