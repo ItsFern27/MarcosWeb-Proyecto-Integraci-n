@@ -1,4 +1,4 @@
-package com.marcoswebproyectos.spring.integracionproyectos.controllers;
+package com.marcoswebproyectos.spring.integracionproyectos.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
