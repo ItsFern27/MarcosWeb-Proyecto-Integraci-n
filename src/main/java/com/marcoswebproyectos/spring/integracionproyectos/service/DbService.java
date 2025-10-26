@@ -25,16 +25,6 @@ public class DbService {
         } catch (Exception e) {
             resultado.put("Nombres de las tablas", e.getMessage());
         }
-
-        try {
-            List<Map<String, Object>> tablasCompleta = jdbcTemplate.queryForList(
-                "SELECT rol FROM usuarios"
-            );
-            resultado.put("consulta2", tablasCompleta);
-        } catch (Exception e) {
-            resultado.put("consulta2_error", e.getMessage());
-        }
-
         return resultado;
     }   
 
