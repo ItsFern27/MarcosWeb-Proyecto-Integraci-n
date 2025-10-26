@@ -25,6 +25,24 @@ public class DbService {
         } catch (Exception e) {
             resultado.put("tables", e.getMessage());
         }
+
+        try {
+            List<Map<String, Object>> tablasSoloNombres = jdbcTemplate.queryForList(
+                "SELECT * FROM usuarios"
+            );
+            resultado.put("usuarios", tablasSoloNombres);
+        } catch (Exception e) {
+            resultado.put("usuarios", e.getMessage());
+        }
+
+        try {
+            List<Map<String, Object>> tablasSoloNombres = jdbcTemplate.queryForList(
+                "SELECT * FROM proyectos"
+            );
+            resultado.put("proyectos", tablasSoloNombres);
+        } catch (Exception e) {
+            resultado.put("proyectos", e.getMessage());
+        }
         return resultado;
     }   
 

@@ -1,9 +1,12 @@
 package com.marcoswebproyectos.spring.integracionproyectos.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,24 @@ public class Usuario {
     private String nombre;
     private String email;
     private String password;
+
+    // Un usuario puede ser autor de varios proyectos
+    @OneToMany(mappedBy = "autor_id")
+    private List<Proyectos> proyectosAutor;
+
+    // Un usuario puede ser miembro de varios proyectos
+    @OneToMany(mappedBy = "usuario_id")
+    private List<Miembros_Proyectos> membresias;
+
+    // // Un usuario puede tener varios elementos en su portafolio
+    // @OneToMany(mappedBy = "usuario_id")
+    // private List<Portafolio> portafolio;
+
+    // // Un usuario puede crear varios tickets de soporte
+    // @OneToMany(mappedBy = "usuario_id")
+    // private List<Tickets_Soporte> tickets;
+
+
 
     // Getters y setters
     public Long getId() { return id; }
