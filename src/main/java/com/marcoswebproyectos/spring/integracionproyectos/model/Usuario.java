@@ -21,20 +21,20 @@ public class Usuario {
     private String password;
 
     // Un usuario puede ser autor de varios proyectos
-    @OneToMany(mappedBy = "autor_id")
+    @OneToMany(mappedBy = "autor_id") // EL mappedBy dirige aL atributo de La cLase de abajo
     private List<Proyectos> proyectosAutor;
 
     // Un usuario puede ser miembro de varios proyectos
     @OneToMany(mappedBy = "usuario_id")
     private List<Miembros_Proyectos> membresias;
 
-    // // Un usuario puede tener varios elementos en su portafolio
-    // @OneToMany(mappedBy = "usuario_id")
-    // private List<Portafolio> portafolio;
+    // Un usuario puede tener varios elementos en su portafolio
+    @OneToMany(mappedBy = "usuario")
+    private List<Portafolio> portafolio;
 
-    // // Un usuario puede crear varios tickets de soporte
-    // @OneToMany(mappedBy = "usuario_id")
-    // private List<Tickets_Soporte> tickets;
+    // Un usuario puede crear varios tickets de soporte
+    @OneToMany(mappedBy = "usuario")
+    private List<Tickets_Soporte> tickets;
 
 
 
