@@ -1,4 +1,4 @@
-package com.marcoswebproyectos.spring.integracionproyectos.controller;
+package com.marcoswebproyectos.spring.integracionproyectos.controller.db_api_rest;
 
 import java.util.Map;
 
@@ -11,7 +11,7 @@ import com.marcoswebproyectos.spring.integracionproyectos.service.DbService;
 
 @RestController
 @RequestMapping("/admin")
-public class DbController {
+public class DbRestController {
 
     @Autowired
     private DbService sqlService;

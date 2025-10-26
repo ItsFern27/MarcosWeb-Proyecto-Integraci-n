@@ -21,9 +21,9 @@ public class DbService {
             List<Map<String, Object>> tablasSoloNombres = jdbcTemplate.queryForList(
                 "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'"
             );
-            resultado.put("Nombres de las tablas", tablasSoloNombres);
+            resultado.put("tables", tablasSoloNombres);
         } catch (Exception e) {
-            resultado.put("Nombres de las tablas", e.getMessage());
+            resultado.put("tables", e.getMessage());
         }
         return resultado;
     }   

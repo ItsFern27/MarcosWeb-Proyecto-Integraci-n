@@ -1,4 +1,4 @@
-package com.marcoswebproyectos.spring.integracionproyectos.controller;
+package com.marcoswebproyectos.spring.integracionproyectos.controller.db_api_rest;
 
 import com.marcoswebproyectos.spring.integracionproyectos.model.Usuario;
 import com.marcoswebproyectos.spring.integracionproyectos.repository.UsuarioRepository;

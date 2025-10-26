@@ -1,4 +1,4 @@
-package com.marcoswebproyectos.spring.integracionproyectos.controller;
+package com.marcoswebproyectos.spring.integracionproyectos.controller.test;
 
 
 import java.util.HashMap;
