@@ -3,6 +3,13 @@ package com.marcoswebproyectos.spring.integracionproyectos;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import java.util.List;
+import com.marcoswebproyectos.spring.integracionproyectos.model.Usuario;
+import com.marcoswebproyectos.spring.integracionproyectos.repository.UsuarioRepository;
+
 @SpringBootApplication
 public class IntegracionproyectosApplication {
 
@@ -12,7 +19,7 @@ public class IntegracionproyectosApplication {
 	@Bean
 	CommandLineRunner init(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
 		return args -> {
-			// 1) Crear admin si no existe
+			// Crear admin si no existe
 			String adminEmail = "admin@mail.com";
 			if (usuarioRepository.findByEmail(adminEmail).isEmpty()) {
 				Usuario admin = new Usuario();
@@ -24,7 +31,7 @@ public class IntegracionproyectosApplication {
 				System.out.println("Usuario admin creado: " + adminEmail + " / admin123");
 			}
 
-			// 2) Hashear contraseñas existentes
+			// Hashear contraseñas existentes
 			List<Usuario> all = usuarioRepository.findAll();
 			for (Usuario u : all) {
 				String pw = u.getPassword();
