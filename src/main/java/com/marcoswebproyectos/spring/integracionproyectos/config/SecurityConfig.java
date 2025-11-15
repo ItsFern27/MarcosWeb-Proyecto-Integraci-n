@@ -57,7 +57,6 @@ public class SecurityConfig {
         return http.build();
     }
     
-
     // Proveedor de autenticación (usa tu servicio y BCrypt) ---
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
