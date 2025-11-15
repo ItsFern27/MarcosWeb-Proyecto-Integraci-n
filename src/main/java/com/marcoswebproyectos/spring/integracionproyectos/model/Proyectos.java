@@ -30,7 +30,7 @@ public class Proyectos {
     // Muchos proyectos pueden pertenecer a un solo autor
     @ManyToOne
     @JoinColumn(name = "autor_id")
-    private Usuario autor_id;
+    private Usuario autor;
 
     // Un proyecto puede tener muchos miembros
     @OneToMany(mappedBy = "proyecto")

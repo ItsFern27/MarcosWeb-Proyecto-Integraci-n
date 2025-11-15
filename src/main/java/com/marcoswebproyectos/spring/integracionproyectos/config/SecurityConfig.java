@@ -36,6 +36,7 @@ public class SecurityConfig {
                                 "/css/**", "/js/**", "/img/**", "/img2/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Solo estas rutas requieren login
+                        .requestMatchers("/mis-proyectos/**").authenticated()
                         .anyRequest().permitAll())
 
                 // Configura el formulario de inicio de sesión

@@ -31,4 +31,9 @@ public class CustomUserDetailsService implements UserDetailsService {
                 usuario.getPassword(),
                 List.of(new SimpleGrantedAuthority(role)));
     }
+
+    public Usuario getUsuarioByEmail(String email) {
+        return usuarioRepository.findByEmail(email)
+                .orElse(null);
+    }
 }

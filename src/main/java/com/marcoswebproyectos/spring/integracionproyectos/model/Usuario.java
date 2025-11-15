@@ -25,7 +25,7 @@ public class Usuario {
     private String rol;
 
     // Un usuario puede ser autor de varios proyectos
-    @OneToMany(mappedBy = "autor_id") // EL mappedBy dirige aL atributo de La cLase de abajo
+    @OneToMany(mappedBy = "autor") // EL mappedBy dirige aL atributo de La cLase de abajo
     private List<Proyectos> proyectosAutor;
 
     // Un usuario puede ser miembro de varios proyectos
