@@ -46,7 +46,7 @@
                                 y añade experiencias valiosas a tu portafolio profesional.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#explorar">Explorar Proyectos</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Explorar Proyectos</a>
                                 <a class="btn btn-hero-outline px-4 py-3" href="/mis-proyectos/nuevo">Crear Proyecto</a>
                             </div>
                         </div>
@@ -63,8 +63,8 @@
                                 destaque.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#oportunidades">Ver Oportunidades</a>
-                                <a class="btn btn-hero-outline px-4 py-3" href="#unirse">Unirse Ahora</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Ver Oportunidades</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="/register">Unirse Ahora</a>
                             </div>
                         </div>
                     </section>
@@ -80,8 +80,8 @@
                                 tecnología.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
-                                <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Conocer Comunidad</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="/register">Empezar Gratis</a>
                             </div>
                         </div>
                     </section>
@@ -101,14 +101,16 @@
 
 
         <main class="container py-5">
-            <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+            <!-- <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
                 <button class="btn btn-primary px-4 py-2 rounded-pill fw-medium">Recientes</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Programación</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Diseño</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Ciberseguridad</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Data Science</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Mobile</button>
-            </div>
+            </div> -->
+
+            <h2 id="HTMLRecientes" class="fw-bold mb-4">Publicaciones Recientes</h2>
 
             <div th:text ="${prueba1}"></div>
 
@@ -124,9 +126,12 @@
                                 <h5 class="card-title" th:text="${proyecto.titulo}"></h5>
                                 <p class="card-text text-muted" th:text="${proyecto.descripcion}"></p>
                                 <div class="d-flex flex-wrap gap-1">
-                                    <span class="badge bg-primary">React</span>
-                                    <span class="badge bg-success">Node.js</span>
-                                    <span class="badge bg-info">MongoDB</span>
+                                    <span th:each="pt, i : ${proyecto.tecnologias}"
+                                        th:if="${i.index < 4}"
+                                        th:class="|badge bg-primary|"
+                                        th:style="|background-color: ${pt.tecnologia.color} !important;|"
+                                        th:text="${pt.tecnologia.nombre}"> Tecnología
+                                    </span>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,7 @@
 package com.marcoswebproyectos.spring.integracionproyectos.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,21 +13,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tickets_soporte")
+@Table(name = "proyectos_tecnologia")
 @Getter
 @Setter
-public class Tickets_Soporte {
+public class Proyectos_Tecnologias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String asunto;
-    private String mensaje;
-    private String estado;
 
-    // Muchos tickets pertenecen a un usuario
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    @JoinColumn(name = "tecnologia_id")
+    private Tecnologias tecnologia;
+
+    @ManyToOne
+    @JoinColumn(name = "proyecto_id")
+    private Proyectos proyecto;
 
 }

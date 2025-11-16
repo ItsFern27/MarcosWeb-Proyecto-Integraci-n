@@ -46,10 +46,12 @@
                                 <div class="mb-4">
                                     <h5 class="fw-semibold">Tecnologías Utilizadas:</h5>
                                     <div class="d-flex flex-wrap gap-2">
-                                        <span class="badge bg-info">Spring Boot</span>
-                                        <span class="badge bg-success">Thymeleaf</span>
-                                        <span class="badge bg-warning">PostgreSQL</span>
-                                        <span class="badge bg-primary">Bootstrap</span>
+                                        <span th:each="pt : ${proyecto.tecnologias}" 
+                                              th:class="|badge bg-primary|"
+                                              th:style="|background-color: ${pt.tecnologia.color} !important;|"
+                                              th:text="${pt.tecnologia.nombre}">
+                                            Tecnología
+                                        </span>
                                     </div>
                                 </div>
 
@@ -57,8 +59,8 @@
 
                                 <div class="d-grid gap-2" sec:authorize="isAuthenticated()">
                                     <!-- Acciones si es el autor del proyecto -->
-                                    <div th:if="${esAutor}" class="d-grid gap-2">
-                                        <div class="alert alert-info text-center py-2" role="alert">
+                                    <div th:if="${esAutor}" class="d-grid">
+                                        <div class="alert alert-info text-center" role="alert">
                                             <span class="fw-semibold">¡Eres el líder de este proyecto!</span>
                                         </div>
                                         <!-- Formulario real de eliminación (oculto a la vista directa del botón) -->

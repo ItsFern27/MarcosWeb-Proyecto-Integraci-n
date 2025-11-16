@@ -37,4 +37,8 @@ public class Proyectos {
     @OneToMany(mappedBy = "proyecto")
     private List<Miembros_Proyectos> miembros;
 
+    // Un proyecto puede tener muchos miembros
+    @OneToMany(mappedBy = "proyecto")
+    private List<Proyectos_Tecnologias> tecnologias;
+
 }

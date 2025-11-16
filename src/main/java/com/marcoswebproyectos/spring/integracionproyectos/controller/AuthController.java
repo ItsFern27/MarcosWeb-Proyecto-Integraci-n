@@ -4,6 +4,9 @@ import com.marcoswebproyectos.spring.integracionproyectos.model.Usuario;
 import com.marcoswebproyectos.spring.integracionproyectos.repository.UsuarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,18 @@ public class AuthController {
     // --- Página de Login ---
     @GetMapping("/login")
     public String loginPage(Model model) {
+
+        // Por request, spring puede acceder al usuario quien la hizo de esta forma:
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // condición de null por seguridad (caso raro donde auth sea null)
+        // isAuthenticated da true o false de acuerdo a la sesion del servidor
+        // AnonymousAuthenticationToken es la clase que se usa cuando no está logueado
+        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            return "redirect:/";
+        }
+
+
         model.addAttribute("Titulo", "Iniciar Sesión");
         return "login";
     }

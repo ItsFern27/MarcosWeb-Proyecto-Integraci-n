@@ -36,10 +36,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Portafolio> portafolio;
 
-    // Un usuario puede crear varios tickets de soporte
-    @OneToMany(mappedBy = "usuario")
-    private List<Tickets_Soporte> tickets;
-
     // Getters y setters
     public Long getId() {
         return id;

@@ -50,6 +50,7 @@ public class DetalleProyectoController {
         model.addAttribute("proyecto", proyecto);
         model.addAttribute("esMiembro", esMiembro);
         model.addAttribute("esAutor", esAutor);
+        model.addAttribute("color", "#D9401E");
         return "detalle-proyecto";
     }
 
