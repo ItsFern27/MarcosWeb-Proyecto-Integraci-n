@@ -143,3 +143,12 @@
 .bg-gradient-purple-pink {
   background: linear-gradient(135deg, #8b5cf6, #ec4899) !important;
 }
+
+/* Estilos para truncar la descripción del proyecto a 3 líneas */
+.card-text.text-muted {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
