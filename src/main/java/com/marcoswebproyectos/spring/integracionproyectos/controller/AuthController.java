@@ -43,6 +43,12 @@ public class AuthController {
     // --- Página de Registro ---
     @GetMapping("/register")
     public String registerPage(Model model) {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.isAuthenticated() && !(auth instanceof AnonymousAuthenticationToken)) {
+            return "redirect:/";
+        }
+
         model.addAttribute("Titulo", "Registrarse");
         return "registro";
     }
