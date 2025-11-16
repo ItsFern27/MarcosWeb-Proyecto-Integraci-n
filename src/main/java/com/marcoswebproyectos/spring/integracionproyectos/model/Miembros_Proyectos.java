@@ -29,6 +29,6 @@ public class Miembros_Proyectos {
     // Muchos miembros están asociados a un usuario
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario_id;
+    private Usuario usuario;
 
 }

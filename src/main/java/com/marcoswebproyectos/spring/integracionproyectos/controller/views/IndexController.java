@@ -1,5 +1,6 @@
 package com.marcoswebproyectos.spring.integracionproyectos.controller.views;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,12 @@ public class IndexController {
     private ProyectosRepository proyectosRepository;
     
     @GetMapping({"/", "/index"})
-    public String getIndex(Model model) {
+    public String getIndex(Principal principal, Model model) {
         
         List<Proyectos> proyectos = proyectosRepository.findAll();
         model.addAttribute("proyectos", proyectos);
+
+        // model.addAttribute("prueba1", proyectos.get(0).getMiembros().get(0).getUsuario_id().getNombre());
 
         return "index";
     }

@@ -55,10 +55,26 @@
 
                                 <hr class="my-4">
 
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary btn-lg px-4 py-3 rounded-3">
-                                        Unirse al Proyecto
-                                    </button>
+                                <div class="d-grid gap-2" sec:authorize="isAuthenticated()">
+                                    <!-- Mensaje si es el autor del proyecto -->
+                                    <div th:if="${esAutor}" class="alert alert-info text-center" role="alert">
+                                        ¡Eres el líder de este proyecto!
+                                    </div>
+
+                                    <!-- Botón para unirse si NO es miembro y NO es autor -->
+                                    <form th:if="${!esMiembro and !esAutor}" th:action="@{/proyecto/{id}/unirse(id=${proyecto.id})}" method="post">
+                                        <button type="submit" class="btn btn-primary btn-lg px-4 py-3 rounded-3 w-100">
+                                            Unirse al Proyecto
+                                        </button>
+                                    </form>
+
+                                    <!-- Botón para abandonar si SÍ es miembro y NO es autor -->
+                                    <form th:if="${esMiembro and !esAutor}" th:action="@{/proyecto/{id}/abandonar(id=${proyecto.id})}" method="post">
+                                        <button type="submit" class="btn btn-danger btn-lg px-4 py-3 rounded-3 w-100">
+                                            Abandonar Proyecto
+                                        </button>
+                                    </form>
+
                                     <a href="/" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-3">
                                         Volver a Proyectos
                                     </a>

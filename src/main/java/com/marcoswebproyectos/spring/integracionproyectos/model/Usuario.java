@@ -29,7 +29,7 @@ public class Usuario {
     private List<Proyectos> proyectosAutor;
 
     // Un usuario puede ser miembro de varios proyectos
-    @OneToMany(mappedBy = "usuario_id")
+    @OneToMany(mappedBy = "usuario")
     private List<Miembros_Proyectos> membresias;
 
     // Un usuario puede tener varios elementos en su portafolio
