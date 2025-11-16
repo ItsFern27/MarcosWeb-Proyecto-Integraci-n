@@ -110,4 +110,26 @@ public class DetalleProyectoController {
         return "redirect:/proyecto/" + id;
     }
 
+    @PostMapping("/{id}/eliminar")
+    public String eliminarProyecto(@PathVariable Long id, Principal principal) {
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
+        Proyectos proyecto = proyectosRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Proyecto no encontrado"));
+
+        Usuario usuario = usuarioRepository.findByEmail(principal.getName())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+
+        if (!proyecto.getAutor().getId().equals(usuario.getId())) {
+            // Si no es el autor, no tiene permiso para eliminar
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tienes permiso para eliminar este proyecto");
+        }
+
+        proyectosRepository.delete(proyecto);
+
+        return "redirect:/mis-proyectos";
+    }
+
 }

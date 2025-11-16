@@ -24,7 +24,7 @@ public class IndexController {
         List<Proyectos> proyectos = proyectosRepository.findAll();
         model.addAttribute("proyectos", proyectos);
 
-        // model.addAttribute("prueba1", proyectos.get(0).getMiembros().get(0).getUsuario_id().getNombre());
+        // model.addAttribute("prueba1", proyectos.get(0).getMiembros().get(0).getUsuario().getNombre());
 
         return "index";
     }

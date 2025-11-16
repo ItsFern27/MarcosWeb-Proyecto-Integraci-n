@@ -56,9 +56,18 @@
                                 <hr class="my-4">
 
                                 <div class="d-grid gap-2" sec:authorize="isAuthenticated()">
-                                    <!-- Mensaje si es el autor del proyecto -->
-                                    <div th:if="${esAutor}" class="alert alert-info text-center" role="alert">
-                                        ¡Eres el líder de este proyecto!
+                                    <!-- Acciones si es el autor del proyecto -->
+                                    <div th:if="${esAutor}" class="d-grid gap-2">
+                                        <div class="alert alert-info text-center py-2" role="alert">
+                                            <span class="fw-semibold">¡Eres el líder de este proyecto!</span>
+                                        </div>
+                                        <!-- Formulario real de eliminación (oculto a la vista directa del botón) -->
+                                        <form id="form-eliminar-proyecto" th:action="@{/proyecto/{id}/eliminar(id=${proyecto.id})}" method="post"></form>
+                                        
+                                        <!-- Botón que abre el modal -->
+                                        <button type="button" class="btn btn-danger btn-lg px-4 py-3 rounded-3 w-100" data-bs-toggle="modal" data-bs-target="#eliminarProyectoModal">
+                                            Eliminar Proyecto
+                                        </button>
                                     </div>
 
                                     <!-- Botón para unirse si NO es miembro y NO es autor -->
@@ -121,6 +130,25 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal de Confirmación de Eliminación -->
+    <div class="modal fade" id="eliminarProyectoModal" tabindex="-1" aria-labelledby="eliminarProyectoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eliminarProyectoModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres eliminar este proyecto? Esta acción es permanente y no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="form-eliminar-proyecto" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <div th:replace="~{fragments/footer :: footer}"></div>
