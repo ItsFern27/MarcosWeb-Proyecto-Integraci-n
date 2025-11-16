@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8" />
@@ -21,40 +21,8 @@
 
 <body class="bg-body">
     <!-- Header (Navbar) -->
-    <nav class="navbar navbar-expand-lg bg-white sticky-top" data-bs-theme="light">
-        <div class="container">
-            <!-- Brand -->
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
-                <span class="brand-badge">
-                    <!-- Icono flecha -->
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </span>
-                <span class="fw-bold text-dark">ProjectLinks</span>
-            </a>
-
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Nav items -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link active" href="mis-proyectos">Mis Proyectos</a>
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link active" href="/mis-proyectos/nuevo">Crear Proyecto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="/login">Iniciar Sesión</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div th:replace="~{fragments/header :: header}"></div>
+    
     <div id="homePage">
 
         <!-- Hero Carousel -->
@@ -78,7 +46,7 @@
                                 y añade experiencias valiosas a tu portafolio profesional.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#explorar">Explorar Proyectos</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Explorar Proyectos</a>
                                 <a class="btn btn-hero-outline px-4 py-3" href="/mis-proyectos/nuevo">Crear Proyecto</a>
                             </div>
                         </div>
@@ -95,8 +63,8 @@
                                 destaque.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#oportunidades">Ver Oportunidades</a>
-                                <a class="btn btn-hero-outline px-4 py-3" href="#unirse">Unirse Ahora</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Ver Oportunidades</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="/register">Unirse Ahora</a>
                             </div>
                         </div>
                     </section>
@@ -112,8 +80,8 @@
                                 tecnología.
                             </p>
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                                <a class="btn btn-hero-primary px-4 py-3" href="#comunidad">Conocer Comunidad</a>
-                                <a class="btn btn-hero-outline px-4 py-3" href="#gratis">Empezar Gratis</a>
+                                <a class="btn btn-hero-primary px-4 py-3" href="#HTMLRecientes">Conocer Comunidad</a>
+                                <a class="btn btn-hero-outline px-4 py-3" href="/register">Empezar Gratis</a>
                             </div>
                         </div>
                     </section>
@@ -133,135 +101,41 @@
 
 
         <main class="container py-5">
-            <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
+            <!-- <div class="d-flex flex-wrap gap-3 justify-content-center mb-5">
                 <button class="btn btn-primary px-4 py-2 rounded-pill fw-medium">Recientes</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Programación</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Diseño</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Ciberseguridad</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Data Science</button>
                 <button class="btn btn-outline-secondary px-4 py-2 rounded-pill fw-medium">Mobile</button>
-            </div>
+            </div> -->
+
+            <h2 id="HTMLRecientes" class="fw-bold mb-4">Publicaciones Recientes</h2>
+
+            <div th:text ="${prueba1}"></div>
 
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"Dashboard Analytics","description":"Plataforma completa de análisis de datos en tiempo real con visualizaciones interactivas, reportes automatizados y machine learning integrado. Permite a las empresas tomar decisiones basadas en datos con dashboards personalizables y alertas inteligentes.","author":"María González","role":"Full Stack Developer","members":[{"name":"Carlos Ruiz","role":"Frontend Developer"},{"name":"Ana López","role":"Data Scientist"},{"name":"Pedro Martín","role":"UI/UX Designer"}],"technologies":["React","Node.js","MongoDB","D3.js","Python"],"status":"En desarrollo","duration":"03/11/2026"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/dashboard.png" alt="Dashboard Analytics"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo1}"></h5> <!-- Dashboard Analytics -->
-                            <p class="card-text text-muted">Plataforma de análisis de datos en tiempo real con
-                                visualizaciones interactivas y reportes automatizados.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-primary">React</span>
-                                <span class="badge bg-success">Node.js</span>
-                                <span class="badge bg-info">MongoDB</span>
+                <div class="col-md-6 col-lg-4" th:each="proyecto : ${proyectos}">
+                    <a style="text-decoration: none;" th:href="@{/proyecto/{id}(id=${proyecto.id})}">
+                        <div class="card h-100 shadow-sm project-card" style="cursor: pointer;">
+                            <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <img th:src="${proyecto.urlImagen}" alt="Project Image"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${proyecto.titulo}"></h5>
+                                <p class="card-text text-muted" th:text="${proyecto.descripcion}"></p>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span th:each="pt, i : ${proyecto.tecnologias}"
+                                        th:if="${i.index < 4}"
+                                        th:class="|badge bg-primary|"
+                                        th:style="|background-color: ${pt.tecnologia.color} !important;|"
+                                        th:text="${pt.tecnologia.nombre}"> Tecnología
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"App de Fitness","description":"Aplicación móvil completa para seguimiento de ejercicios, nutrición y progreso personal con sistema de gamificación. Incluye planes personalizados, seguimiento de calorías, retos sociales y integración con wearables.","author":"Diego Fernández","role":"Mobile Developer","members":[{"name":"Laura Sánchez","role":"UI/UX Designer"},{"name":"Roberto Kim","role":"Backend Developer"}],"technologies":["Flutter","Firebase","Dart","Node.js"],"status":"Beta","duration":"20/07/2025"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/app.png" alt="App de Fitness"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo2}"></h5> <!-- App de Fitness -->
-                            <p class="card-text text-muted">Aplicación móvil para seguimiento de ejercicios, nutrición y
-                                progreso personal con gamificación.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-info">Flutter</span>
-                                <span class="badge bg-warning">Firebase</span>
-                                <span class="badge bg-danger">Dart</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"Sistema de Seguridad","description":"Herramienta avanzada de monitoreo y detección de vulnerabilidades para aplicaciones web empresariales. Incluye análisis en tiempo real, reportes de seguridad automatizados y sistema de alertas tempranas.","author":"Elena Vargas","role":"Cybersecurity Specialist","members":[{"name":"Miguel Torres","role":"Backend Developer"},{"name":"Sofia Chen","role":"DevOps Engineer"},{"name":"Alex Rivera","role":"Security Analyst"}],"technologies":["Python","Django","PostgreSQL","Docker","Redis"],"status":"Producción","duration":"05/05/2026"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/sistema.png" alt="Sistema de Seguridad"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo3}"></h5> <!-- Sistema de Seguridad -->
-                            <p class="card-text text-muted">Herramienta de monitoreo y detección de vulnerabilidades
-                                para
-                                aplicaciones web empresariales.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-warning">Python</span>
-                                <span class="badge bg-success">Django</span>
-                                <span class="badge bg-primary">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"E-commerce Platform","description":"Plataforma completa de comercio electrónico con gestión avanzada de inventario, pagos integrados, sistema de recomendaciones y panel de administración. Incluye funcionalidades de multi-vendor y análisis de ventas.","author":"Javier Morales","role":"Full Stack Developer","members":[{"name":"Carmen Ruiz","role":"Frontend Developer"},{"name":"Luis García","role":"Backend Developer"},{"name":"Natalia Vega","role":"Product Manager"}],"technologies":["Vue.js","Express","Stripe","MongoDB","Redis"],"status":"Lanzamiento","duration":"hoy"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/e-commerce.png" alt="E-commerce Platform"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo4}"></h5> <!-- E-commerce Platform -->
-                            <p class="card-text text-muted">Plataforma completa de comercio electrónico con gestión de
-                                inventario y pagos integrados.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-success">Vue.js</span>
-                                <span class="badge bg-success">Express</span>
-                                <span class="badge bg-info">Stripe</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"ML Predictor","description":"Sistema avanzado de machine learning para predicción de tendencias de mercado y análisis predictivo. Utiliza algoritmos de deep learning para generar insights precisos y recomendaciones automatizadas para inversiones.","author":"Dr. Patricia Silva","role":"Data Scientist","members":[{"name":"Fernando López","role":"ML Engineer"},{"name":"Isabella Chen","role":"Data Analyst"}],"technologies":["Python","TensorFlow","Pandas","Scikit-learn","Docker"],"status":"Investigación","duration":"15/10/2026"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/ml.png" alt="ML Predictor"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo5}"></h5> <!-- ML Predictor -->
-                            <p class="card-text text-muted">Sistema de machine learning para predicción de tendencias de
-                                mercado y análisis predictivo.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-warning">Python</span>
-                                <span class="badge bg-primary">TensorFlow</span>
-                                <span class="badge bg-primary">Pandas</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm project-card" style="cursor: pointer;"
-                        data-project='{"name":"Red Social Creativa","description":"Plataforma social innovadora enfocada en artistas y diseñadores para compartir, colaborar y monetizar proyectos creativos. Incluye marketplace integrado, herramientas de colaboración en tiempo real y sistema de portfolios dinámicos.","author":"Andrés Castillo","role":"Creative Director","members":[{"name":"Valeria Mendoza","role":"UI/UX Designer"},{"name":"Tomás Herrera","role":"Frontend Developer"},{"name":"Gabriela Santos","role":"Community Manager"}],"technologies":["React","GraphQL","AWS","Node.js","PostgreSQL"],"status":"Beta Privada","duration":"30/08/2025"}'>
-                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
-                            <img src="/img/red.png" alt="Red Social Creativa"
-                                style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${Titulo6}"></h5> <!-- Red Social Creativa -->
-                            <p class="card-text text-muted">Plataforma social enfocada en artistas y diseñadores para
-                                compartir y colaborar en proyectos creativos.</p>
-                            <div class="d-flex flex-wrap gap-1">
-                                <span class="badge bg-primary">React</span>
-                                <span class="badge bg-purple">GraphQL</span>
-                                <span class="badge bg-warning">AWS</span>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </main>
@@ -350,69 +224,13 @@
     <!--fin del homePage-->
 
     <!-- Footer -->
-    <footer class="bg-white border-top mt-5">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-12 col-md-4">
-                    <div class="d-flex align-items-center gap-2 mb-2">
-                        <span class="brand-badge">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z">
-                                </path>
-                            </svg>
-                        </span>
-                        <span class="fw-bold">ProjectLinks</span>
-                    </div>
-                    <p class="text-muted mb-0">
-                        Conecta con equipos, aporta a proyectos reales y haz crecer tu portafolio.
-                    </p>
-                </div>
-
-                <div class="col-6 col-md-2">
-                    <h6 class="fw-semibold mb-3">Producto</h6>
-                    <ul class="list-unstyled">
-                        <li><a class="text-decoration-none text-muted" href="#explorar">Explorar</a></li>
-                        <li><a class="text-decoration-none text-muted" href="#crear">Crear</a></li>
-                        <li><a class="text-decoration-none text-muted" href="#precios">Precios</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-6 col-md-2">
-                    <h6 class="fw-semibold mb-3">Compañía</h6>
-                    <ul class="list-unstyled">
-                        <li><a class="text-decoration-none text-muted" href="#nosotros">Nosotros</a></li>
-                        <li><a class="text-decoration-none text-muted" href="#blog">Blog</a></li>
-                        <li><a class="text-decoration-none text-muted" href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-12 col-md-4">
-                    <h6 class="fw-semibold mb-3">Mantente al día</h6>
-                    <form class="d-flex gap-2">
-                        <input type="email" class="form-control" placeholder="Tu correo" aria-label="Tu correo">
-                        <button class="btn btn-primary" type="submit">Suscribirme</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center pt-4 mt-4 border-top">
-                <small class="text-muted">© 2025 ProjectLinks. Todos los derechos reservados.</small>
-                <div class="d-flex gap-3 mt-3 mt-sm-0">
-                    <a href="#privacidad" class="text-decoration-none text-muted">Privacidad</a>
-                    <a href="#terminos" class="text-decoration-none text-muted">Términos</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
 
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
-
-    <!-- Script -->
-    <script src="/javascript/app.js"></script>
 </body>
 
 </html>

@@ -36,19 +36,19 @@ public class SecurityConfig {
                                 "/css/**", "/js/**", "/img/**", "/img2/**")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN") // Solo estas rutas requieren login
-                        .requestMatchers("/mis-proyectos/**").authenticated()
+                        .requestMatchers("/mis-proyectos/**", "/proyecto/**").authenticated()
                         .anyRequest().permitAll())
 
                 // Configura el formulario de inicio de sesión
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .defaultSuccessUrl("/index", true) // redirige al index tras login
+                        .defaultSuccessUrl("/", true) // redirige al index tras login
                         .permitAll())
 
                 // Configura el cierre de sesión
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/index") // redirige al index después de cerrar sesión
+                        .logoutSuccessUrl("/") // redirige al index después de cerrar sesión
                         .permitAll())
 
                 // Permite pruebas con Postman o endpoints API
@@ -56,7 +56,7 @@ public class SecurityConfig {
 
         return http.build();
     }
-
+    
     // Proveedor de autenticación (usa tu servicio y BCrypt) ---
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {

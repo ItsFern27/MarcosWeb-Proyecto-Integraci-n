@@ -11,24 +11,21 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "miembros_proyecto")
+@Table(name = "proyectos_tecnologia")
 @Getter
 @Setter
-public class Miembros_Proyectos {
+public class Proyectos_Tecnologias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String rol;
 
-    // Muchos miembros pertenecen a un proyecto
+    @ManyToOne
+    @JoinColumn(name = "tecnologia_id")
+    private Tecnologias tecnologia;
+
     @ManyToOne
     @JoinColumn(name = "proyecto_id")
     private Proyectos proyecto;
-
-    // Muchos miembros están asociados a un usuario
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
 
 }

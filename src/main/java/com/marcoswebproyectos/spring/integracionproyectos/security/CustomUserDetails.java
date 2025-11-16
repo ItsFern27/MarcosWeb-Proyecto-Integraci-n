@@ -24,6 +24,10 @@ public class CustomUserDetails implements UserDetails {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
     }
 
+    public String getNombre() {
+        return usuario.getNombre(); // <- aquí tu atributo personalizado
+    }
+
     @Override
     public String getPassword() {
         return usuario.getPassword();

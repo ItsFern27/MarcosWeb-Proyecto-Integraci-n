@@ -26,6 +26,7 @@ public class Proyectos {
     private String descripcion;
     private String estado;
     private String duracion;
+    private String urlImagen;
 
     // Muchos proyectos pueden pertenecer a un solo autor
     @ManyToOne
@@ -35,5 +36,9 @@ public class Proyectos {
     // Un proyecto puede tener muchos miembros
     @OneToMany(mappedBy = "proyecto")
     private List<Miembros_Proyectos> miembros;
+
+    // Un proyecto puede tener muchos miembros
+    @OneToMany(mappedBy = "proyecto")
+    private List<Proyectos_Tecnologias> tecnologias;
 
 }
