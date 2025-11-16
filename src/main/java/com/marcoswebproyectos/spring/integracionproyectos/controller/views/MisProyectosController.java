@@ -32,14 +32,14 @@ public class MisProyectosController {
     @GetMapping("/mis-proyectos")
     public String getMisProyectos(Principal principal, Model model) {
 
-        // 1. Obtener usuario logueado
+        // usuario logueado
         Usuario usuario = usuarioRepository.findByEmail(principal.getName())
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
 
-        // 2. Proyectos donde el usuario es autor
+        // proyectos usuario autor
         List<Proyectos> proyectosAutor = proyectosRepository.findByAutor(usuario);
 
-        // 3. Proyectos donde el usuario es miembro
+        // proyectos usuario miembro
         List<Miembros_Proyectos> membresias = miembrosProyectosRepository.findAll()
                 .stream()
                 .filter(m -> m.getUsuario().getId().equals(usuario.getId()))
@@ -53,7 +53,6 @@ public class MisProyectosController {
                 .distinct()
                 .collect(Collectors.toList());
 
-        // 4. Enviar datos a la vista
         model.addAttribute("proyectosAutor", proyectosAutor);
         model.addAttribute("proyectosMiembro", proyectosMiembro);
         model.addAttribute("proyectosTotales", proyectosTotales);
