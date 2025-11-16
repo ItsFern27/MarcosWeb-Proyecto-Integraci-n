@@ -2,6 +2,7 @@ package com.marcoswebproyectos.spring.integracionproyectos.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +13,8 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "proyectos")
@@ -27,6 +30,9 @@ public class Proyectos {
     private String estado;
     private String duracion;
     private String urlImagen;
+
+    @Column(name = "fecha_creacion")
+    private Timestamp fechaCreacion;
 
     // Muchos proyectos pueden pertenecer a un solo autor
     @ManyToOne

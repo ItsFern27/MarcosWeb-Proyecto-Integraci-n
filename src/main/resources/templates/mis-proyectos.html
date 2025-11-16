@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
@@ -21,51 +21,53 @@
 
 <body>
     <!-- Header (Navbar) -->
-    <nav class="navbar navbar-expand-lg bg-white sticky-top" data-bs-theme="light">
+    <div th:replace="~{fragments/header :: header}"></div>
+    
+    <!-- Usuario-->
+    <section class="perfil-usuario" style="padding: 20px; margin-bottom: 5px;">
         <div class="container">
-            <!-- Brand -->
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index">
-                <span class="brand-badge">
-                    <!-- Icono flecha -->
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </span>
-                <span class="fw-bold text-dark">ProjectLinks</span>
-            </a>
+            <div style="display: flex; align-items: center; gap: 15px; border-bottom: 1px solid #ddd">
+                
+                <!-- Avatar -->
+                <div style="
+                    width: 70px; 
+                    height: 70px; 
+                    background: #4CAF50; 
+                    border-radius: 50%;
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center;
+                    color: white; 
+                    font-size: 28px; 
+                    font-weight: bold;">
+                    <span th:text="${usuario.nombre.substring(0,1)}"></span>
+                </div>
 
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar" aria-expanded="false" aria-label="Abrir navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <!-- Datos del usuario -->
+                <div>
+                    <h2 th:text="${usuario.nombre}" style="margin: 0;"></h2>
+                    <p th:text="${usuario.email}" style="margin: 0; color: gray;"></p>
 
-            <!-- Nav items -->
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link active" href="mis-proyectos">Mis Proyectos</a>
-                    </li>
-                    <li class="nav-item me-lg-3">
-                        <a class="nav-link active" href="/mis-proyectos/nuevo">Crear Proyecto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary" href="#login">Iniciar Sesión</a>
-                    </li>
-                </ul>
+                    <!-- Número de proyectos -->
+                    <p style="margin-top: 5px;">
+                        <b th:text="${proyectosAutor.size()}"></b> creados
+                    </p>
+                </div>
+
             </div>
         </div>
-    </nav>
-    <!--sección mis proyectos-->
+    </section>
+
+    <!--Sección mis proyectos-->
     <div id="myProjectsPage">
         <main class="container py-5">
 
             <!-- Encabezado -->
             <div class="mb-4 d-flex align-items-center gap-3">
-                <a href="index" class="btn btn-outline-primary">← Volver</a>
                 <h1 class="fw-bold mb-0">Mis Proyectos</h1>
             </div>
-            <p class="text-muted mb-5">Gestiona tus proyectos guardados y aquellos en los que participas activamente.
+            <p class="text-muted mb-5">
+                Gestiona tus proyectos creados y aquellos en los que participas activamente.
             </p>
 
             <!-- Tarjetas estadísticas -->
@@ -73,149 +75,124 @@
                 <div class="col-md-4">
                     <div class="card text-center shadow-sm">
                         <div class="card-body">
-                            <h2 class="fw-bold">3</h2>
-                            <p class="text-muted mb-0">Proyectos Guardados</p>
+                            <h2 class="fw-bold" th:text="${proyectosAutor.size()}">0</h2>
+                            <p class="text-muted mb-0">Proyectos creados por ti</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card text-center shadow-sm">
                         <div class="card-body">
-                            <h2 class="fw-bold">2</h2>
-                            <p class="text-muted mb-0">Participaciones Activas</p>
+                            <h2 class="fw-bold" th:text="${proyectosMiembro.size()}">0</h2>
+                            <p class="text-muted mb-0">Proyectos donde soy miembro</p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card text-center shadow-sm">
                         <div class="card-body">
-                            <h2 class="fw-bold">1</h2>
-                            <p class="text-muted mb-0">Proyectos Completados</p>
+                            <h2 class="fw-bold">
+                                <span th:text="${#lists.size(proyectosTotales.?[estado=='Finalizado'])}">0</span>
+                            </h2>
+                            <p class="text-muted mb-0">Proyectos completados</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Proyectos Guardados -->
+            <!-- Proyectos creados por el usuario -->
             <section class="mb-5">
-                <h2 class="h4 fw-bold mb-4">📚 Proyectos Guardados</h2>
+                <h2 class="h4 fw-bold mb-4">📚 Proyectos creados por ti</h2>
+
                 <div class="row g-4">
 
-                    <!-- Proyecto 1 -->
-                    <div class="col-md-6 col-lg-4">
+                    <div class="alert alert-info" th:if="${proyectosAutor.size() == 0}">
+                        <p>No has creado proyectos aún.</p>
+                        <a href="/mis-proyectos/nuevo">Crear un nuevo proyecto</a>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4" th:each="p : ${proyectosAutor}">
                         <div class="card shadow-sm h-100">
-                            <div class="bg-white d-flex align-items-center justify-content-center"
-                                style="height: 200px;">
-                                <img src="/img/dashboard.png" alt="Dashboard Analytics"
-                                    style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                            <!-- Imagen -->
+                            <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <img th:src="${p.urlImagen != null ? p.urlImagen : '/img/default-project.png'}" alt="Project Image"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
+
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">Dashboard Analytics</h5>
-                                <p class="text-muted small">Guardado hace 2 días</p>
+
+                                <h5 class="card-title" th:text="${p.titulo}">Título</h5>
+                                <p class="text-muted small">
+                                    Creado:
+                                    <span th:text="${#dates.format(p.fechaCreacion, 'dd/MM/yyyy')}"></span>
+                                </p>
+
+                                <p class="text-muted small" th:text="${p.descripcion}">
+                                    Descripción breve
+                                </p>
+
+                                <!-- Estado -->
                                 <div class="mb-3">
-                                    <span class="badge bg-primary">React</span>
-                                    <span class="badge bg-success">Node.js</span>
+                                    <span class="badge bg-primary" th:if="${p.estado == 'En desarrollo'}">En desarrollo</span>
+                                    <span class="badge bg-warning text-dark" th:if="${p.estado == 'Pausado'}">Pausado</span>
+                                    <span class="badge bg-success" th:if="${p.estado == 'Finalizado'}">Finalizado</span>
                                 </div>
+
                                 <div class="mt-auto d-flex gap-2">
-                                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                                    <button class="btn btn-gradient-green w-100">Aplicar</button>
+                                    <a class="btn btn-primary w-100" th:href="@{/proyecto/{id}(id=${p.id})}">Ver Detalles</a>
+                                    <button class="btn btn-gradient-green w-100">Editar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Proyecto 2 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="bg-white d-flex align-items-center justify-content-center"
-                                style="height: 200px;">
-                                <img src="/img/app.png" alt="Dashboard Analytics"
-                                    style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">App de Fitness</h5>
-                                <p class="text-muted small">Guardado hace 1 semana</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-info">Flutter</span>
-                                    <span class="badge bg-warning">Firebase</span>
-                                </div>
-                                <div class="mt-auto d-flex gap-2">
-                                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                                    <button class="btn btn-gradient-green w-100">Aplicar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 3 -->
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card shadow-sm h-100">
-                            <div class="bg-white d-flex align-items-center justify-content-center"
-                                style="height: 200px;">
-                                <img src="/img/ml.png" alt="Dashboard Analytics"
-                                    style="max-width: 80%; max-height: 80%; object-fit: contain;">
-                            </div>
-                            <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">ML Predictor</h5>
-                                <p class="text-muted small">Guardado hace 3 días</p>
-                                <div class="mb-3">
-                                    <span class="badge bg-warning">Python</span>
-                                    <span class="badge bg-info">TensorFlow</span>
-                                </div>
-                                <div class="mt-auto d-flex gap-2">
-                                    <button class="btn btn-primary w-100">Ver Detalles</button>
-                                    <button class="btn btn-gradient-green w-100">Aplicar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
 
             <!-- Participaciones activas -->
-            <section>
-                <h2 class="h4 fw-bold mb-4">🚀 Mis Participaciones</h2>
-
-                <!-- Proyecto activo 1 -->
-                <div class="card shadow-sm mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Sistema de Seguridad</h5>
-                        <p class="text-muted small">Tu rol: <span class="fw-bold text-primary">Frontend Developer</span>
-                        </p>
-                        <div class="progress mb-3" style="height: 6px;">
-                            <div class="progress-bar bg-success" style="width: 75%"></div>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-warning">Python</span>
-                            <span class="badge bg-success">Django</span>
-                            <span class="badge bg-primary">PostgreSQL</span>
-                        </div>
-                        <div class="mt-3 d-flex gap-2">
-                            <button class="btn btn-primary">Continuar Trabajando</button>
-                            <button class="btn btn-gradient-green">Ver Detalles</button>
-                            <button class="btn btn-gradient-red">Dejar Proyecto</button>
-                        </div>
+            <section class="mb-5">
+                <h2 class="h4 fw-bold mb-4">🚀 Tus Participaciones</h2>
+                <div class="row g-4">
+                    <div class="alert alert-info" th:if="${proyectosMiembro.size() == 0}">
+                        <p>No estás participando en ningún proyecto actualmente.</p>
+                        <a href="/#">Unirme a un nuevo proyecto</a>
                     </div>
-                </div>
 
-                <!-- Proyecto activo 2 -->
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title">Red Social Creativa</h5>
-                        <p class="text-muted small">Tu rol: <span class="fw-bold text-primary">UI/UX Designer</span></p>
-                        <div class="progress mb-3" style="height: 6px;">
-                            <div class="progress-bar bg-info" style="width: 45%"></div>
-                        </div>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-primary">React</span>
-                            <span class="badge bg-purple">GraphQL</span>
-                            <span class="badge bg-danger">AWS</span>
-                        </div>
-                        <div class="mt-3 d-flex gap-2">
-                            <button class="btn btn-primary">Continuar Trabajando</button>
-                            <button class="btn btn-gradient-green">Ver Detalles</button>
-                            <button class="btn btn-gradient-red">Dejar Proyecto</button>
+                    <div class="col-md-6 col-lg-4" th:each="mp : ${proyectosMiembro}">
+                        <div class="card shadow-sm h-100">
+                            <!-- Imagen -->
+                            <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <img th:src="${mp.urlImagen != null ? mp.urlImagen : '/img/default-project.png'}" alt="Project Image"
+                                    style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title" th:text="${mp.titulo}">Título proyecto</h5>
+                                <p class="text-muted small">
+                                    Mi rol:
+                                    <span class="fw-bold text-primary"
+                                        th:text="${mp.miembros.?[usuario.id == usuario.id][0].rol}">
+                                    </span>
+                                </p>
+
+                                <p class="text-muted small" th:text="${mp.descripcion}">
+                                    Descripción breve
+                                </p>
+
+                                <div class="mb-3">
+                                    <span class="badge bg-secondary" th:text="${mp.estado}"></span>
+                                </div>
+
+                                <div class="mt-auto d-flex gap-2">
+                                    <a class="btn btn-primary w-100" th:href="@{/proyecto/{id}(id=${mp.id})}">Ver Detalles</a>
+                                    <form th:action="@{/proyecto/{id}/abandonar(id=${mp.id})}" method="post" class="w-100">
+                                        <button type="submit" class="btn btn-gradient-red w-100">
+                                            Dejar Proyecto
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>    
                         </div>
                     </div>
                 </div>
@@ -286,7 +263,6 @@
 
     <!-- Script -->
     <script src="/javascript/app.js"></script>
-
 </body>
 
 </html>

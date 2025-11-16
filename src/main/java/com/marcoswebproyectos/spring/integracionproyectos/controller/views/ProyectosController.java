@@ -34,25 +34,31 @@ public class ProyectosController {
     @Autowired
     private Proyectos_TecnologiasRepository proyectosTecnologiasRepository;
 
-    // pagina principal de proyectos
-    @GetMapping("/mis-proyectos")
-    public String giveProys() {
-        return "mis-proyectos";
-    }
+    /*
+     * pagina principal de proyectos
+     * Ahora se maneja en MisProyectosController
+     * 
+     * @GetMapping("/proyectos")
+     * public String giveProys() {
+     * return "mis-proyectos";
+     * }
+     */
 
     // formulario para crear nuevo proyecto
     @GetMapping("/mis-proyectos/nuevo")
     public String mostrarFormulario(Model model) {
         model.addAttribute("proyecto", new Proyectos());
 
-        // Obtener todas las tecnologias desded el repository para la selección en el front
+        // Obtener todas las tecnologias desded el repository para la selección en el
+        // front
         model.addAttribute("allTecnologias", tecnologiasRepository.findAll());
         return "crear-proyecto";
     }
 
     // procesar formulario de creacion
     @PostMapping("/mis-proyectos/crear")
-    public String crearProyecto(Proyectos proyecto, @RequestParam("tecnologias") List<Long> tecnologiasIds, Principal principal) {
+    public String crearProyecto(Proyectos proyecto, @RequestParam("tecnologias") List<Long> tecnologiasIds,
+            Principal principal) {
 
         // Obtener al usuario autenticado
         Usuario autor = userService.getUsuarioByEmail(principal.getName());
@@ -62,7 +68,8 @@ public class ProyectosController {
         proyecto.setEstado("En progreso");
         Proyectos proyectoGuardado = proyectosRepository.save(proyecto);
 
-        // Luego de crear, se insertan las tecnologias seleccionadas en Proyectos_Tecnologias con proyectoGuardado (que actuaria como el proyecto_id)
+        // Luego de crear, se insertan las tecnologias seleccionadas en
+        // Proyectos_Tecnologias con proyectoGuardado (que actuaria como el proyecto_id)
         for (Long tecId : tecnologiasIds) {
             Tecnologias tec = tecnologiasRepository.findById(tecId).orElse(null);
             if (tec != null) {
