@@ -59,34 +59,52 @@
 
                                 <div class="d-grid gap-2" sec:authorize="isAuthenticated()">
                                     <!-- Acciones si es el autor del proyecto -->
-                                    <div th:if="${esAutor}" class="d-grid">
+                                    <div th:if="${esAutor}" class="d-grid gap-2">
                                         <div class="alert alert-info text-center" role="alert">
                                             <span class="fw-semibold">¡Eres el líder de este proyecto!</span>
                                         </div>
-                                        <!-- Formulario real de eliminación (oculto a la vista directa del botón) -->
+
+                                        <!-- Botón para Finalizar Proyecto (si no está finalizado) -->
+                                        <form id="form-finalizar-proyecto" th:if="${proyecto.estado != 'Finalizado'}" th:action="@{/proyecto/{id}/finalizar(id=${proyecto.id})}" method="post"></form>
+                                        <button style="background-color: rgb(165, 145, 29) !important; border-color: rgb(165, 145, 29) !important;" th:if="${proyecto.estado != 'Finalizado'}" type="button" class="btn btn-success btn-lg px-4 py-3 rounded-3 w-100" data-bs-toggle="modal" data-bs-target="#finalizarProyectoModal">
+                                            Finalizar Proyecto
+                                        </button>
+
+                                        <!-- Formulario real de eliminación -->
                                         <form id="form-eliminar-proyecto" th:action="@{/proyecto/{id}/eliminar(id=${proyecto.id})}" method="post"></form>
                                         
-                                        <!-- Botón que abre el modal -->
+                                        <!-- Botón que abre el modal de eliminación -->
                                         <button type="button" class="btn btn-danger btn-lg px-4 py-3 rounded-3 w-100" data-bs-toggle="modal" data-bs-target="#eliminarProyectoModal">
                                             Eliminar Proyecto
                                         </button>
                                     </div>
 
-                                    <!-- Botón para unirse si NO es miembro y NO es autor -->
-                                    <form th:if="${!esMiembro and !esAutor}" th:action="@{/proyecto/{id}/unirse(id=${proyecto.id})}" method="post">
-                                        <button type="submit" class="btn btn-primary btn-lg px-4 py-3 rounded-3 w-100">
-                                            Unirse al Proyecto
-                                        </button>
-                                    </form>
+                                    <!-- Lógica para no autores -->
+                                    <div th:if="${!esAutor}">
+                                        <!-- Si el proyecto está finalizado -->
+                                        <div th:if="${proyecto.estado == 'Finalizado'}" class="alert alert-warning text-center" role="alert">
+                                            <span class="fw-semibold">Este proyecto ha finalizado.</span>
+                                        </div>
 
-                                    <!-- Botón para abandonar si SÍ es miembro y NO es autor -->
-                                    <form th:if="${esMiembro and !esAutor}" th:action="@{/proyecto/{id}/abandonar(id=${proyecto.id})}" method="post">
-                                        <button type="submit" class="btn btn-danger btn-lg px-4 py-3 rounded-3 w-100">
-                                            Abandonar Proyecto
-                                        </button>
-                                    </form>
+                                        <!-- Si el proyecto NO está finalizado -->
+                                        <div th:if="${proyecto.estado != 'Finalizado'}">
+                                            <!-- Botón para unirse si NO es miembro -->
+                                            <form th:if="${!esMiembro}" th:action="@{/proyecto/{id}/unirse(id=${proyecto.id})}" method="post">
+                                                <button type="submit" class="btn btn-primary btn-lg px-4 py-3 rounded-3 w-100">
+                                                    Unirse al Proyecto
+                                                </button>
+                                            </form>
 
-                                    <a href="/" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-3">
+                                            <!-- Botón para abandonar si SÍ es miembro -->
+                                            <form th:if="${esMiembro}" th:action="@{/proyecto/{id}/abandonar(id=${proyecto.id})}" method="post">
+                                                <button type="submit" class="btn btn-danger btn-lg px-4 py-3 rounded-3 w-100">
+                                                    Abandonar Proyecto
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <a href="/" class="btn btn-outline-secondary btn-lg px-4 py-3 rounded-3 mt-2">
                                         Volver a Proyectos
                                     </a>
                                 </div>
@@ -147,6 +165,25 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" form="form-eliminar-proyecto" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Finalización -->
+    <div class="modal fade" id="finalizarProyectoModal" tabindex="-1" aria-labelledby="finalizarProyectoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="finalizarProyectoModalLabel">Confirmar Finalización</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que quieres marcar este proyecto como finalizado? No podrás revertir esta acción.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="form-finalizar-proyecto" class="btn btn-primary">Confirmar y Finalizar</button>
                 </div>
             </div>
         </div>

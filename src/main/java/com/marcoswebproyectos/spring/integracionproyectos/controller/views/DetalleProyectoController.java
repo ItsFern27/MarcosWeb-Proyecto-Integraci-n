@@ -133,4 +133,27 @@ public class DetalleProyectoController {
         return "redirect:/mis-proyectos";
     }
 
+    @PostMapping("/{id}/finalizar")
+    public String finalizarProyecto(@PathVariable Long id, Principal principal) {
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
+        Proyectos proyecto = proyectosRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Proyecto no encontrado"));
+
+        Usuario usuario = usuarioRepository.findByEmail(principal.getName())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado"));
+
+        if (!proyecto.getAutor().getId().equals(usuario.getId())) {
+            // Si no es el autor, no tiene permiso para finalizar
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "No tienes permiso para finalizar este proyecto");
+        }
+
+        proyecto.setEstado("Finalizado");
+        proyectosRepository.save(proyecto);
+
+        return "redirect:/proyecto/" + id;
+    }
+
 }
