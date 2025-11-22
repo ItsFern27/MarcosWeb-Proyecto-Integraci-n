@@ -1,15 +1,5 @@
 package com.marcoswebproyectos.spring.integracionproyectos.controller.views;
 
-import java.security.Principal;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.marcoswebproyectos.spring.integracionproyectos.model.Proyectos;
 import com.marcoswebproyectos.spring.integracionproyectos.model.Proyectos_Tecnologias;
 import com.marcoswebproyectos.spring.integracionproyectos.model.Tecnologias;
@@ -18,6 +8,15 @@ import com.marcoswebproyectos.spring.integracionproyectos.repository.ProyectosRe
 import com.marcoswebproyectos.spring.integracionproyectos.repository.Proyectos_TecnologiasRepository;
 import com.marcoswebproyectos.spring.integracionproyectos.repository.TecnologiasRepository;
 import com.marcoswebproyectos.spring.integracionproyectos.service.CustomUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class ProyectosController {
@@ -34,23 +33,21 @@ public class ProyectosController {
     @Autowired
     private Proyectos_TecnologiasRepository proyectosTecnologiasRepository;
 
-    /*
-     * pagina principal de proyectos
-     * Ahora se maneja en MisProyectosController
-     * 
-     * @GetMapping("/proyectos")
-     * public String giveProys() {
-     * return "mis-proyectos";
-     * }
-     */
+    @GetMapping("/proyectos/buscar")
+    public String buscarProyectos(@RequestParam(value = "titulo", required = false) String titulo,
+                                @RequestParam(value = "tecnologiaId", required = false) Long tecnologiaId,
+                                Model model) {
+        List<Proyectos> proyectos = proyectosRepository.search(titulo, tecnologiaId);
+        model.addAttribute("proyectos", proyectos);
+        model.addAttribute("titulo", titulo);
+        model.addAttribute("tecnologiaId", tecnologiaId);
+        return "search-results";
+    }
 
     // formulario para crear nuevo proyecto
     @GetMapping("/mis-proyectos/nuevo")
     public String mostrarFormulario(Model model) {
         model.addAttribute("proyecto", new Proyectos());
-
-        // Obtener todas las tecnologias desded el repository para la selección en el
-        // front
         model.addAttribute("allTecnologias", tecnologiasRepository.findAll());
         return "crear-proyecto";
     }
@@ -59,17 +56,11 @@ public class ProyectosController {
     @PostMapping("/mis-proyectos/crear")
     public String crearProyecto(Proyectos proyecto, @RequestParam("tecnologias") List<Long> tecnologiasIds,
             Principal principal) {
-
-        // Obtener al usuario autenticado
         Usuario autor = userService.getUsuarioByEmail(principal.getName());
         proyecto.setAutor(autor);
-
-        // Por defecto
         proyecto.setEstado("En progreso");
         Proyectos proyectoGuardado = proyectosRepository.save(proyecto);
 
-        // Luego de crear, se insertan las tecnologias seleccionadas en
-        // Proyectos_Tecnologias con proyectoGuardado (que actuaria como el proyecto_id)
         for (Long tecId : tecnologiasIds) {
             Tecnologias tec = tecnologiasRepository.findById(tecId).orElse(null);
             if (tec != null) {
@@ -82,5 +73,4 @@ public class ProyectosController {
 
         return "redirect:/mis-proyectos";
     }
-
 }

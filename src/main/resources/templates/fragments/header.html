@@ -26,6 +26,19 @@
             <!-- Nav items -->
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <!-- Search Form -->
+                    <li class="nav-item me-lg-3">
+                        <form class="d-flex" th:action="@{/proyectos/buscar}" method="GET">
+                            <input class="form-control me-2" type="search" name="titulo" placeholder="Buscar por título..." aria-label="Buscar">
+                            <select class="form-select me-2" name="tecnologiaId">
+                                <option value="">Todas</option>
+                                <option th:each="tech : ${todasLasTecnologias}" th:value="${tech.id}" th:text="${tech.nombre}"></option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                        </form>
+                    </li>
+
                     <li class="nav-item me-lg-3">
                         <a class="nav-link active" href="/mis-proyectos">Mis Proyectos</a>
                     <li class="nav-item me-lg-3">
