@@ -115,7 +115,7 @@
             <div th:text ="${prueba1}"></div>
 
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4" th:each="proyecto : ${proyectos}">
+                <div class="col-md-6 col-lg-4" th:each="proyecto : ${proyectos}" th:if="${proyecto.estado != 'Finalizado'}">
                     <a style="text-decoration: none;" th:href="@{/proyecto/{id}(id=${proyecto.id})}">
                         <div class="card h-100 shadow-sm project-card" style="cursor: pointer;">
                             <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">

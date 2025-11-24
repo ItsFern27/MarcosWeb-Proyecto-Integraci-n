@@ -32,10 +32,6 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private List<Miembros_Proyectos> membresias;
 
-    // Un usuario puede tener varios elementos en su portafolio
-    @OneToMany(mappedBy = "usuario")
-    private List<Portafolio> portafolio;
-
     // Getters y setters
     public Long getId() {
         return id;
