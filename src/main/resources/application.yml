@@ -1,14 +1,5 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:5432/postgres?sslmode=require
-    username: postgres.ctrxfryiwpbnuhykasqt
-    password: "_F4pHjJE3n#c3bQ"
-    driver-class-name: org.postgresql.Driver
-
   jpa:
-    hibernate:
-      ddl-auto: none
-    show-sql: true
     properties:
       hibernate:
         format_sql: true

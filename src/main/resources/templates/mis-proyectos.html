@@ -135,9 +135,10 @@
 
                                 <!-- Estado -->
                                 <div class="mb-3">
-                                    <span class="badge bg-primary" th:if="${p.estado == 'En desarrollo'}">En desarrollo</span>
+                                    <span class="badge bg-primary" th:if="${p.estado == 'En progreso'}">En progreso</span>
                                     <span class="badge bg-warning text-dark" th:if="${p.estado == 'Pausado'}">Pausado</span>
                                     <span class="badge bg-success" th:if="${p.estado == 'Finalizado'}">Finalizado</span>
+                                    <span class="badge bg-secondary" th:if="${p.estado != 'En progreso' and p.estado != 'Pausado' and p.estado != 'Finalizado'}" th:text="${p.estado}"></span>
                                 </div>
 
                                 <div class="mt-auto d-flex gap-2">
@@ -171,7 +172,7 @@
                                 <p class="text-muted small">
                                     Mi rol:
                                     <span class="fw-bold text-primary"
-                                        th:text="${mp.miembros.?[usuario.id == usuario.id][0].rol}">
+                                        th:text="${rolPorProyecto[mp.id]}">
                                     </span>
                                 </p>
 

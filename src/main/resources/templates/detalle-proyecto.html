@@ -64,6 +64,11 @@
                                             <span class="fw-semibold">¡Eres el líder de este proyecto!</span>
                                         </div>
 
+                                        <!-- Botón para Editar Proyecto (si no está finalizado) -->
+                                        <a th:if="${proyecto.estado != 'Finalizado'}" th:href="@{/proyecto/{id}/editar(id=${proyecto.id})}" class="btn btn-outline-primary btn-lg px-4 py-3 rounded-3 w-100">
+                                            <i class="bi bi-pencil-square me-1"></i> Editar Proyecto
+                                        </a>
+
                                         <!-- Botón para Finalizar Proyecto (si no está finalizado) -->
                                         <form id="form-finalizar-proyecto" th:if="${proyecto.estado != 'Finalizado'}" th:action="@{/proyecto/{id}/finalizar(id=${proyecto.id})}" method="post"></form>
                                         <button style="background-color: rgb(165, 145, 29) !important; border-color: rgb(165, 145, 29) !important;" th:if="${proyecto.estado != 'Finalizado'}" type="button" class="btn btn-success btn-lg px-4 py-3 rounded-3 w-100" data-bs-toggle="modal" data-bs-target="#finalizarProyectoModal">

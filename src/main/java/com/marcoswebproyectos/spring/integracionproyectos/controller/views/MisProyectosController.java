@@ -2,6 +2,7 @@ package com.marcoswebproyectos.spring.integracionproyectos.controller.views;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ import com.marcoswebproyectos.spring.integracionproyectos.repository.ProyectosRe
 import com.marcoswebproyectos.spring.integracionproyectos.repository.UsuarioRepository;
 import java.util.stream.Stream;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class MisProyectosController {
 
@@ -49,15 +53,24 @@ public class MisProyectosController {
                 .map(Miembros_Proyectos::getProyecto)
                 .collect(Collectors.toList());
 
+        // Mapa proyectoId -> rol del usuario en ese proyecto
+        Map<Long, String> rolPorProyecto = membresias.stream()
+                .collect(Collectors.toMap(
+                        m -> m.getProyecto().getId(),
+                        Miembros_Proyectos::getRol));
+
         List<Proyectos> proyectosTotales = Stream.concat(proyectosAutor.stream(), proyectosMiembro.stream())
                 .distinct()
                 .collect(Collectors.toList());
 
         model.addAttribute("proyectosAutor", proyectosAutor);
         model.addAttribute("proyectosMiembro", proyectosMiembro);
+        model.addAttribute("rolPorProyecto", rolPorProyecto);
         model.addAttribute("proyectosTotales", proyectosTotales);
         model.addAttribute("usuario", usuario);
 
+        log.debug("Dashboard cargado para el usuario: {}", usuario.getEmail());
         return "mis-proyectos";
     }
 }
+
