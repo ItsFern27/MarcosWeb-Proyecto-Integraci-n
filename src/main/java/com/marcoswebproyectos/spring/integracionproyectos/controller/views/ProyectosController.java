@@ -8,6 +8,7 @@ import com.marcoswebproyectos.spring.integracionproyectos.repository.ProyectosRe
 import com.marcoswebproyectos.spring.integracionproyectos.repository.Proyectos_TecnologiasRepository;
 import com.marcoswebproyectos.spring.integracionproyectos.repository.TecnologiasRepository;
 import com.marcoswebproyectos.spring.integracionproyectos.service.CustomUserDetailsService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.security.Principal;
 import java.util.List;
 
+@Slf4j
 @Controller
 public class ProyectosController {
 
@@ -60,6 +62,7 @@ public class ProyectosController {
         proyecto.setAutor(autor);
         proyecto.setEstado("En progreso");
         Proyectos proyectoGuardado = proyectosRepository.save(proyecto);
+        log.info("Proyecto '{}' creado por el usuario {}", proyecto.getTitulo(), principal.getName());
 
         for (Long tecId : tecnologiasIds) {
             Tecnologias tec = tecnologiasRepository.findById(tecId).orElse(null);
